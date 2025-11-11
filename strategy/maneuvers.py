@@ -57,21 +57,21 @@ def model_of_maneuver_function (s: State,
 """
 
 
-__all__ = [
-    'no_maneuver',
-    'random_maneuver',
-    'random_uniform_maneuver',
-    'random_uniform_largest_maneuver',
-    ]
+__all__ = ['maneuver_consolidate', 'no_maneuver']
 
 
-from typing import Tuple, Optional
-from random import randint, choice
+from random import choice, randint
+from typing import List, Optional, Tuple
 from model.region import Unit
 from model.territory import Territory
 from model.army import Army
 from model.state import State
-from model.state_informations import territory_occupant, territory_units, bordering_territories, territories_occupied_by_army
+from model.state_informations import (
+    territory_occupant,
+    territory_units,
+    bordering_territories,
+    territories_occupied_by_army,
+)
 
 
 def no_maneuver (s: State,
@@ -212,3 +212,95 @@ def random_uniform_largest_maneuver (s: State,
                    for b in bordering_territories(s, t)), "Effective unless the army has only isolated territories or not enough units to maneuver"
 
     return result
+
+
+# ============================== Shared helpers ==============================
+
+def _neighbors(s: State, t: Territory) -> List[Territory]:
+    return [t2 for (src, t2) in s.world.adjacencies if src == t]
+
+
+def _enemy_neighbors(s: State, a: Army, t: Territory) -> List[Territory]:
+    return [n for n in _neighbors(s, t) if territory_occupant(s, n) != a]
+
+
+def _friendly_neighbors_balanced(s: State, a: Army, t: Territory) -> List[Territory]:
+    return [n for n in _neighbors(s, t) if territory_occupant(s, n) == a]
+
+
+def _balanced_region_completion_value(s: State, a: Army, t: Territory) -> float:
+    region = t.region
+    missing = sum(1 for terr in s.world.region_territories[region] if territory_occupant(s, terr) != a)
+    if missing == 0:
+        return 0.0
+    if missing == 1:
+        return region.value * 2.5
+    if missing == 2:
+        return region.value * 1.2
+    if missing == 3:
+        return region.value * 0.5
+    return 0.0
+
+
+def _balanced_frontline_pressure(s: State, a: Army, t: Territory) -> float:
+    enemies = _enemy_neighbors(s, a, t)
+    if not enemies:
+        return 0.2
+    enemy_units = sum(territory_units(s, e) for e in enemies)
+    friendly_support = sum(territory_units(s, f) for f in _friendly_neighbors_balanced(s, a, t))
+    choke_bonus = 1.35 if len(enemies) == 1 else 1.0
+    region_bonus = 0.4 * _balanced_region_completion_value(s, a, t)
+    return (
+        max(0.4, enemy_units - 0.45 * friendly_support + 1.25 * len(enemies))
+        * choke_bonus
+        + region_bonus
+    )
+
+
+def _border_territories_balanced(s: State, a: Army) -> List[Territory]:
+    return [t for t in territories_occupied_by_army(s, a) if _enemy_neighbors(s, a, t)]
+
+
+# ======================== Balanced Aggressor strategy ======================
+
+def maneuver_consolidate (s: State,
+                          a: Army) -> Optional[Tuple[Territory, Territory, Unit]]:
+    """
+    Move half of the surplus from interior territories to the borders under the
+    heaviest pressure.
+    """
+    assert isinstance(s, State)
+    assert isinstance(a, Army)
+    assert a in s.world.armies, "The army must belong to the current state"
+
+    borders = set(_border_territories_balanced(s, a))
+    if not borders:
+        return None
+
+    interior = [t for t in territories_occupied_by_army(s, a) if t not in borders]
+    best_move: Optional[Tuple[Territory, Territory, Unit]] = None
+    best_gain = 0.0
+
+    for source in interior:
+        source_units = territory_units(s, source)
+        if source_units <= 2:
+            continue
+        for neighbor in bordering_territories(s, source):
+            if neighbor not in borders:
+                continue
+            pressure = _balanced_frontline_pressure(s, a, neighbor)
+            movable = max(1, (source_units - 1) // 2)
+            gain = pressure * movable
+            if gain > best_gain:
+                best_gain = gain
+                best_move = (source, neighbor, movable)
+
+    return best_move
+
+
+# ======================== Probabilistic strategy ============================
+
+def no_maneuver(_: State,
+                __: Army) -> Optional[Tuple[Territory, Territory, Unit]]:
+    """Probabilistic helper: skipping the maneuver phase entirely."""
+    return None

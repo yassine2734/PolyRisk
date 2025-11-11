@@ -1,0 +1,18 @@
+
+============================================================
+Tournament date: 2025-11-11 22:47:31
+Total games: 500
+Finished: 466
+Draws: 34
+Average turns: 481.9
+Average duration: 0.12s
+Total time: 1.0 minutes
+Speed: 8.2 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 228 | Win%:   48.9% | AvgPlace:  3.69
+ 2. random, fully #3           Wins:  59 | Win%:   12.7% | AvgPlace:  3.44
+ 3. random, fully #1           Wins:  54 | Win%:   11.6% | AvgPlace:  4.90
+ 4. random, fully #2           Wins:  54 | Win%:   11.6% | AvgPlace:  4.23
+ 5. random, fully #5           Wins:  36 | Win%:    7.7% | AvgPlace:  1.96
+ 6. random, fully #4           Wins:  35 | Win%:    7.5% | AvgPlace:  2.78

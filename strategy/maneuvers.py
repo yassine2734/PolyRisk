@@ -57,21 +57,22 @@ def model_of_maneuver_function (s: State,
 """
 
 
-__all__ = ['maneuver_consolidate', 'no_maneuver']
+__all__ = [
+    'no_maneuver',
+    'random_maneuver',
+    'random_uniform_maneuver',
+    'random_uniform_largest_maneuver',
+    'maneuver_consolidate'
+    ]
 
 
-from random import choice, randint
-from typing import List, Optional, Tuple
+from typing import Tuple, Optional, List
+from random import randint, choice
 from model.region import Unit
 from model.territory import Territory
 from model.army import Army
 from model.state import State
-from model.state_informations import (
-    territory_occupant,
-    territory_units,
-    bordering_territories,
-    territories_occupied_by_army,
-)
+from model.state_informations import territory_occupant, territory_units, bordering_territories, territories_occupied_by_army, army_adjacent_territories
 
 
 def no_maneuver (s: State,
@@ -104,14 +105,10 @@ def random_maneuver (s: State,
     assert a in s.world.armies, "The army must belong to the current state"
 
     M = [ (t_0, t_1, randint(1, u_t_0 - 1))
-          for (t_0, t_1) in s.world.adjacencies
-          if territory_occupant(s, t_0) == a
-          if territory_occupant(s, t_1) == a
+          for (t_0, t_1) in army_adjacent_territories(s, a)
           if (u_t_0 := territory_units(s, t_0)) > 1 ]
-    if len(M) == 0:
-        result = None
-    else:
-        result = choice(M)
+    result = ( None      if len(M) == 0 else
+               choice(M) )
 
     if result is not None:
         (t_0, t_1, n) = result
@@ -143,15 +140,11 @@ def random_uniform_maneuver (s: State,
     assert isinstance(a, Army)
     assert a in s.world.armies, "The army must belong to the current state"
 
-    M = [ (t_0, t_1, u_t_0 - u_t_1 )
-          for (t_0, t_1) in s.world.adjacencies
-          if territory_occupant(s, t_0) == a
-          if territory_occupant(s, t_1) == a
+    M = [ (t_0, t_1, (u_t_0 - u_t_1) // 2)
+          for (t_0, t_1) in army_adjacent_territories(s, a)
           if (u_t_0 := territory_units(s, t_0)) > (u_t_1 := territory_units(s, t_1)) + 1 ]
-    if len(M) == 0:
-        result = None
-    else:
-        result = choice(M)
+    result = ( None      if len(M) == 0 else
+               choice(M) )
 
     if result is not None:
         (t_0, t_1, n) = result
@@ -183,11 +176,9 @@ def random_uniform_largest_maneuver (s: State,
     assert isinstance(a, Army)
     assert a in s.world.armies, "The army must belong to the current state"
 
-    M = [ (t_0, t_1, u_t_0 - u_t_1 )
-          for (t_0, t_1) in s.world.adjacencies
-          if territory_occupant(s, t_0) == a
-          if territory_occupant(s, t_1) == a
-          if (u_t_0 := territory_units(s, t_0)) > (u_t_1 := territory_units(s, t_1)) ]
+    M = [ (t_0, t_1, (u_t_0 - u_t_1) // 2)
+          for (t_0, t_1) in army_adjacent_territories(s, a)
+          if (u_t_0 := territory_units(s, t_0)) >= (u_t_1 := territory_units(s, t_1)) + 2 ]
     if len(M) == 0:
         result = None
     else:
@@ -212,7 +203,6 @@ def random_uniform_largest_maneuver (s: State,
                    for b in bordering_territories(s, t)), "Effective unless the army has only isolated territories or not enough units to maneuver"
 
     return result
-
 
 # ============================== Shared helpers ==============================
 
@@ -261,7 +251,7 @@ def _border_territories_balanced(s: State, a: Army) -> List[Territory]:
     return [t for t in territories_occupied_by_army(s, a) if _enemy_neighbors(s, a, t)]
 
 
-# ======================== Balanced Aggressor strategy ======================
+# ======================== Heuristic Probabilistic Attacker strategy ======================
 
 def maneuver_consolidate (s: State,
                           a: Army) -> Optional[Tuple[Territory, Territory, Unit]]:

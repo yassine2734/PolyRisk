@@ -1,0 +1,57 @@
+============================================================
+Analyse de l'Efficacité (Coût vs Gain)
+============================================================
+
+============================================================
+1. La Baseline (Vitesse pure du moteur)
+============================================================
+Tournament date: 2025-11-23 15:31:38
+Total games: 10000
+Finished: 10000
+Draws: 0
+Average turns: 233.1
+Average duration: 0.21s
+Total time: 5.8 minutes
+Speed: 28.5 games/sec
+
+Final standings:
+ 1. random, fully #4           Wins: 2587 | Win%:   25.9% | AvgPlace:  1.74
+ 2. random, fully #3           Wins: 2550 | Win%:   25.5% | AvgPlace:  2.23
+ 3. random, fully #2           Wins: 2508 | Win%:   25.1% | AvgPlace:  2.73
+ 4. random, fully #1           Wins: 2355 | Win%:   23.5% | AvgPlace:  3.29
+
+============================================================
+Le Test Probabilistic
+============================================================
+Tournament date: 2025-11-23 15:36:09
+Total games: 10000
+Finished: 10000
+Draws: 0
+Average turns: 89.0
+Average duration: 0.08s
+Total time: 2.2 minutes
+Speed: 76.7 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 8767 | Win%:   87.7% | AvgPlace:  1.37
+ 2. random, fully #2           Wins: 424 | Win%:    4.2% | AvgPlace:  2.87
+ 3. random, fully #3           Wins: 419 | Win%:    4.2% | AvgPlace:  1.96
+ 4. random, fully #1           Wins: 390 | Win%:    3.9% | AvgPlace:  3.80
+
+============================================================
+Le Test HPA
+============================================================
+Tournament date: 2025-11-23 15:51:46
+Total games: 10000
+Finished: 10000
+Draws: 0
+Average turns: 61.7
+Average duration: 0.07s
+Total time: 2.0 minutes
+Speed: 82.5 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 9494 | Win%:   94.9% | AvgPlace:  1.15
+ 2. random, fully #3           Wins: 185 | Win%:    1.8% | AvgPlace:  1.98
+ 3. random, fully #2           Wins: 174 | Win%:    1.7% | AvgPlace:  2.95
+ 4. random, fully #1           Wins: 147 | Win%:    1.5% | AvgPlace:  3.92

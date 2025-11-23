@@ -1,0 +1,567 @@
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        Pobablistic
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+============================================================
+Baseline
+============================================================
+Tournament date: 2025-11-23 11:10:27
+Total games: 2000
+Finished: 1999
+Draws: 1
+Average turns: 211.5
+Average duration: 0.19s
+Total time: 1.1 minutes
+Speed: 31.1 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1449 | Win%:   72.5% | AvgPlace:  1.82
+ 2. random, fully #2           Wins: 190 | Win%:    9.5% | AvgPlace:  2.72
+ 3. random, fully #3           Wins: 183 | Win%:    9.2% | AvgPlace:  1.91
+ 4. random, fully #1           Wins: 177 | Win%:    8.9% | AvgPlace:  3.55
+
+
+============================================================
+reinforce_border_first
+============================================================
+Tournament date: 2025-11-23 11:11:32
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 112.8
+Average duration: 0.10s
+Total time: 0.6 minutes
+Speed: 59.5 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1540 | Win%:   77.0% | AvgPlace:  1.69
+ 2. random, fully #3           Wins: 163 | Win%:    8.2% | AvgPlace:  1.92
+ 3. random, fully #1           Wins: 151 | Win%:    7.5% | AvgPlace:  3.62
+ 4. random, fully #2           Wins: 146 | Win%:    7.3% | AvgPlace:  2.77
+
+============================================================
+maximum_defense
+============================================================
+Tournament date: 2025-11-23 11:13:36
+Total games: 2000
+Finished: 1999
+Draws: 1
+Average turns: 171.6
+Average duration: 0.15s
+Total time: 0.9 minutes
+Speed: 38.3 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1717 | Win%:   85.9% | AvgPlace:  1.42
+ 2. random, fully #3           Wins: 100 | Win%:    5.0% | AvgPlace:  1.95
+ 3. random, fully #2           Wins:  99 | Win%:    5.0% | AvgPlace:  2.85
+ 4. random, fully #1           Wins:  83 | Win%:    4.2% | AvgPlace:  3.78
+
+============================================================
+uniform_invasion
+============================================================
+Tournament date: 2025-11-23 11:16:24
+Total games: 2000
+Finished: 1997
+Draws: 3
+Average turns: 231.0
+Average duration: 0.22s
+Total time: 1.2 minutes
+Speed: 27.6 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1461 | Win%:   73.2% | AvgPlace:  1.81
+ 2. random, fully #3           Wins: 185 | Win%:    9.3% | AvgPlace:  1.91
+ 3. random, fully #2           Wins: 182 | Win%:    9.1% | AvgPlace:  2.73
+ 4. random, fully #1           Wins: 169 | Win%:    8.5% | AvgPlace:  3.56
+
+============================================================
+no_maneuver
+============================================================
+Tournament date: 2025-11-23 11:18:16
+Total games: 2000
+Finished: 1993
+Draws: 7
+Average turns: 266.0
+Average duration: 0.23s
+Total time: 1.3 minutes
+Speed: 25.7 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1355 | Win%:   68.0% | AvgPlace:  1.96
+ 2. random, fully #3           Wins: 227 | Win%:   11.4% | AvgPlace:  1.89
+ 3. random, fully #2           Wins: 215 | Win%:   10.8% | AvgPlace:  2.67
+ 4. random, fully #1           Wins: 196 | Win%:    9.8% | AvgPlace:  3.48
+
+============================================================
+reinforce_border_first & maximum_defense
+============================================================
+Tournament date: 2025-11-23 11:19:11
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 89.7
+Average duration: 0.08s
+Total time: 0.4 minutes
+Speed: 74.3 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1746 | Win%:   87.3% | AvgPlace:  1.38
+ 2. random, fully #3           Wins:  94 | Win%:    4.7% | AvgPlace:  1.95
+ 3. random, fully #2           Wins:  86 | Win%:    4.3% | AvgPlace:  2.87
+ 4. random, fully #1           Wins:  74 | Win%:    3.7% | AvgPlace:  3.80
+
+============================================================
+reinforce_border_first & uniform_invasion
+============================================================
+Tournament date: 2025-11-23 11:20:33
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 115.1
+Average duration: 0.10s
+Total time: 0.6 minutes
+Speed: 59.1 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1569 | Win%:   78.5% | AvgPlace:  1.65
+ 2. random, fully #2           Wins: 151 | Win%:    7.5% | AvgPlace:  2.78
+ 3. random, fully #3           Wins: 147 | Win%:    7.3% | AvgPlace:  1.93
+ 4. random, fully #1           Wins: 133 | Win%:    6.7% | AvgPlace:  3.65
+
+============================================================
+reinforce_border_first & no_maneuver
+============================================================
+Tournament date: 2025-11-23 11:21:46
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 125.4
+Average duration: 0.11s
+Total time: 0.6 minutes
+Speed: 52.4 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1445 | Win%:   72.2% | AvgPlace:  1.83
+ 2. random, fully #2           Wins: 192 | Win%:    9.6% | AvgPlace:  2.71
+ 3. random, fully #3           Wins: 188 | Win%:    9.4% | AvgPlace:  1.91
+ 4. random, fully #1           Wins: 175 | Win%:    8.8% | AvgPlace:  3.55
+
+============================================================
+maximum_defense & uniform_invasion
+============================================================
+Tournament date: 2025-11-23 11:26:27
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 168.6
+Average duration: 0.15s
+Total time: 0.9 minutes
+Speed: 39.0 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1767 | Win%:   88.3% | AvgPlace:  1.35
+ 2. random, fully #1           Wins:  78 | Win%:    3.9% | AvgPlace:  3.81
+ 3. random, fully #3           Wins:  78 | Win%:    3.9% | AvgPlace:  1.96
+ 4. random, fully #2           Wins:  77 | Win%:    3.9% | AvgPlace:  2.88
+
+============================================================
+maximum_defense & no_maneuver
+============================================================
+Tournament date: 2025-11-23 11:28:16
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 189.3
+Average duration: 0.17s
+Total time: 0.9 minutes
+Speed: 35.8 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1769 | Win%:   88.4% | AvgPlace:  1.35
+ 2. random, fully #2           Wins:  93 | Win%:    4.7% | AvgPlace:  2.87
+ 3. random, fully #1           Wins:  69 | Win%:    3.5% | AvgPlace:  3.82
+ 4. random, fully #3           Wins:  69 | Win%:    3.5% | AvgPlace:  1.97
+
+============================================================
+uniform_invasion & no_maneuver
+============================================================
+Tournament date: 2025-11-23 11:30:35
+Total games: 2000
+Finished: 1980
+Draws: 20
+Average turns: 308.8
+Average duration: 0.28s
+Total time: 1.5 minutes
+Speed: 21.6 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1338 | Win%:   67.6% | AvgPlace:  1.97
+ 2. random, fully #2           Wins: 231 | Win%:   11.7% | AvgPlace:  2.66
+ 3. random, fully #3           Wins: 219 | Win%:   11.1% | AvgPlace:  1.90
+ 4. random, fully #1           Wins: 192 | Win%:    9.7% | AvgPlace:  3.47
+
+============================================================
+reinforce_border_first & maximum_defense & uniform_invasion
+============================================================
+Tournament date: 2025-11-23 11:31:52
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 95.9
+Average duration: 0.08s
+Total time: 0.5 minutes
+Speed: 70.5 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1724 | Win%:   86.2% | AvgPlace:  1.41
+ 2. random, fully #2           Wins: 104 | Win%:    5.2% | AvgPlace:  2.85
+ 3. random, fully #3           Wins:  96 | Win%:    4.8% | AvgPlace:  1.95
+ 4. random, fully #1           Wins:  76 | Win%:    3.8% | AvgPlace:  3.79
+
+============================================================
+reinforce_border_first & maximum_defense & no_maneuver
+============================================================
+Tournament date: 2025-11-23 11:32:51
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 80.0
+Average duration: 0.07s
+Total time: 0.4 minutes
+Speed: 84.1 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1803 | Win%:   90.1% | AvgPlace:  1.30
+ 2. random, fully #3           Wins:  73 | Win%:    3.6% | AvgPlace:  1.96
+ 3. random, fully #1           Wins:  64 | Win%:    3.2% | AvgPlace:  3.84
+ 4. random, fully #2           Wins:  60 | Win%:    3.0% | AvgPlace:  2.90
+
+============================================================
+reinforce_border_first & uniform_invasion & no_maneuver
+============================================================
+Tournament date: 2025-11-23 11:34:51
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 108.6
+Average duration: 0.10s
+Total time: 0.5 minutes
+Speed: 62.4 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1589 | Win%:   79.5% | AvgPlace:  1.62
+ 2. random, fully #3           Wins: 143 | Win%:    7.1% | AvgPlace:  1.93
+ 3. random, fully #1           Wins: 139 | Win%:    7.0% | AvgPlace:  3.66
+ 4. random, fully #2           Wins: 129 | Win%:    6.5% | AvgPlace:  2.80
+
+============================================================
+maximum_defense & uniform_invasion & no_maneuver
+============================================================
+Tournament date: 2025-11-23 11:36:42
+Total games: 2000
+Finished: 1998
+Draws: 2
+Average turns: 224.5
+Average duration: 0.20s
+Total time: 1.1 minutes
+Speed: 29.8 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1668 | Win%:   83.5% | AvgPlace:  1.50
+ 2. random, fully #2           Wins: 118 | Win%:    5.9% | AvgPlace:  2.82
+ 3. random, fully #3           Wins: 114 | Win%:    5.7% | AvgPlace:  1.94
+ 4. random, fully #1           Wins:  98 | Win%:    4.9% | AvgPlace:  3.74
+
+============================================================
+Probabilistic : all strategies
+============================================================
+Tournament date: 2025-11-23 11:37:34
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 83.1
+Average duration: 0.07s
+Total time: 0.4 minutes
+Speed: 82.9 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 1797 | Win%:   89.8% | AvgPlace:  1.30
+ 2. random, fully #2           Wins:  80 | Win%:    4.0% | AvgPlace:  2.88
+ 3. random, fully #3           Wins:  70 | Win%:    3.5% | AvgPlace:  1.97
+ 4. random, fully #1           Wins:  53 | Win%:    2.6% | AvgPlace:  3.85
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+            Heuristic Probabilistic Attacker
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+============================================================
+Baseline
+============================================================
+Tournament date: 2025-11-23 11:49:28
+Total games: 2000
+Finished: 1996
+Draws: 4
+Average turns: 150.1
+Average duration: 0.16s
+Total time: 0.9 minutes
+Speed: 38.5 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 1749 | Win%:   87.6% | AvgPlace:  1.37
+ 2. random, fully #3           Wins:  97 | Win%:    4.9% | AvgPlace:  1.95
+ 3. random, fully #1           Wins:  77 | Win%:    3.9% | AvgPlace:  3.80
+ 4. random, fully #2           Wins:  73 | Win%:    3.7% | AvgPlace:  2.88
+
+============================================================
+reinforce_borders_heavy
+============================================================
+Tournament date: 2025-11-23 11:51:10
+Total games: 2000
+Finished: 1995
+Draws: 5
+Average turns: 91.7
+Average duration: 0.11s
+Total time: 0.6 minutes
+Speed: 52.7 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 1725 | Win%:   86.5% | AvgPlace:  1.41
+ 2. random, fully #2           Wins: 105 | Win%:    5.3% | AvgPlace:  2.85
+ 3. random, fully #1           Wins:  83 | Win%:    4.2% | AvgPlace:  3.78
+ 4. random, fully #3           Wins:  82 | Win%:    4.1% | AvgPlace:  1.96
+
+============================================================
+maximum_defense
+============================================================
+Tournament date: 2025-11-23 11:52:20
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 122.2
+Average duration: 0.12s
+Total time: 0.7 minutes
+Speed: 47.2 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 1877 | Win%:   93.8% | AvgPlace:  1.18
+ 2. random, fully #2           Wins:  46 | Win%:    2.3% | AvgPlace:  2.93
+ 3. random, fully #3           Wins:  43 | Win%:    2.1% | AvgPlace:  1.98
+ 4. random, fully #1           Wins:  34 | Win%:    1.7% | AvgPlace:  3.90
+
+============================================================
+invasion_pressure_balanced
+============================================================
+Tournament date: 2025-11-23 11:53:32
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 129.9
+Average duration: 0.14s
+Total time: 0.8 minutes
+Speed: 42.2 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 1742 | Win%:   87.1% | AvgPlace:  1.39
+ 2. random, fully #3           Wins:  94 | Win%:    4.7% | AvgPlace:  1.95
+ 3. random, fully #2           Wins:  92 | Win%:    4.6% | AvgPlace:  2.86
+ 4. random, fully #1           Wins:  72 | Win%:    3.6% | AvgPlace:  3.80
+
+============================================================
+maneuver_consolidate
+============================================================
+Tournament date: 2025-11-23 11:54:43
+Total games: 2000
+Finished: 1998
+Draws: 2
+Average turns: 138.6
+Average duration: 0.15s
+Total time: 0.8 minutes
+Speed: 40.1 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 1763 | Win%:   88.2% | AvgPlace:  1.35
+ 2. random, fully #3           Wins:  84 | Win%:    4.2% | AvgPlace:  1.96
+ 3. random, fully #2           Wins:  81 | Win%:    4.1% | AvgPlace:  2.88
+ 4. random, fully #1           Wins:  70 | Win%:    3.5% | AvgPlace:  3.81
+
+============================================================
+reinforce_borders_heavy & maximum_defense
+============================================================
+Tournament date: 2025-11-23 11:55:53
+Total games: 2000
+Finished: 1999
+Draws: 1
+Average turns: 70.4
+Average duration: 0.08s
+Total time: 0.5 minutes
+Speed: 73.6 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 1874 | Win%:   93.7% | AvgPlace:  1.19
+ 2. random, fully #2           Wins:  51 | Win%:    2.6% | AvgPlace:  2.92
+ 3. random, fully #3           Wins:  49 | Win%:    2.5% | AvgPlace:  1.98
+ 4. random, fully #1           Wins:  25 | Win%:    1.3% | AvgPlace:  3.91
+
+============================================================
+reinforce_borders_heavy & invasion_pressure_balanced
+============================================================
+Tournament date: 2025-11-23 11:56:52
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 84.4
+Average duration: 0.10s
+Total time: 0.6 minutes
+Speed: 55.7 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 1761 | Win%:   88.0% | AvgPlace:  1.36
+ 2. random, fully #3           Wins:  85 | Win%:    4.2% | AvgPlace:  1.96
+ 3. random, fully #2           Wins:  78 | Win%:    3.9% | AvgPlace:  2.88
+ 4. random, fully #1           Wins:  76 | Win%:    3.8% | AvgPlace:  3.80
+
+============================================================
+reinforce_borders_heavy & maneuver_consolidate
+============================================================
+Tournament date: 2025-11-23 11:58:06
+Total games: 2000
+Finished: 1999
+Draws: 1
+Average turns: 80.9
+Average duration: 0.10s
+Total time: 0.5 minutes
+Speed: 62.0 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 1791 | Win%:   89.6% | AvgPlace:  1.31
+ 2. random, fully #2           Wins:  76 | Win%:    3.8% | AvgPlace:  2.89
+ 3. random, fully #3           Wins:  75 | Win%:    3.8% | AvgPlace:  1.96
+ 4. random, fully #1           Wins:  57 | Win%:    2.9% | AvgPlace:  3.84
+
+============================================================
+maximum_defense & invasion_pressure_balanced
+============================================================
+Tournament date: 2025-11-23 11:59:36
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 106.1
+Average duration: 0.11s
+Total time: 0.6 minutes
+Speed: 55.4 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 1895 | Win%:   94.8% | AvgPlace:  1.16
+ 2. random, fully #3           Wins:  43 | Win%:    2.1% | AvgPlace:  1.98
+ 3. random, fully #2           Wins:  33 | Win%:    1.7% | AvgPlace:  2.95
+ 4. random, fully #1           Wins:  29 | Win%:    1.5% | AvgPlace:  3.92
+
+============================================================
+maximum_defense & maneuver_consolidate
+============================================================
+Tournament date: 2025-11-23 12:00:42
+Total games: 2000
+Finished: 1998
+Draws: 2
+Average turns: 108.2
+Average duration: 0.12s
+Total time: 0.7 minutes
+Speed: 49.0 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 1889 | Win%:   94.5% | AvgPlace:  1.16
+ 2. random, fully #2           Wins:  40 | Win%:    2.0% | AvgPlace:  2.94
+ 3. random, fully #1           Wins:  38 | Win%:    1.9% | AvgPlace:  3.91
+ 4. random, fully #3           Wins:  31 | Win%:    1.6% | AvgPlace:  1.98
+
+============================================================
+invasion_pressure_balanced & maneuver_consolidate
+============================================================
+Tournament date: 2025-11-23 12:02:10
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 134.4
+Average duration: 0.15s
+Total time: 0.8 minutes
+Speed: 40.2 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 1759 | Win%:   87.9% | AvgPlace:  1.36
+ 2. random, fully #2           Wins:  87 | Win%:    4.3% | AvgPlace:  2.87
+ 3. random, fully #1           Wins:  77 | Win%:    3.9% | AvgPlace:  3.80
+ 4. random, fully #3           Wins:  77 | Win%:    3.9% | AvgPlace:  1.96
+
+============================================================
+reinforce_borders_heavy & maximum_defense & invasion_pressure_balanced
+============================================================
+Tournament date: 2025-11-23 12:03:13
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 67.3
+Average duration: 0.08s
+Total time: 0.5 minutes
+Speed: 70.8 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 1877 | Win%:   93.8% | AvgPlace:  1.18
+ 2. random, fully #2           Wins:  51 | Win%:    2.5% | AvgPlace:  2.93
+ 3. random, fully #1           Wins:  40 | Win%:    2.0% | AvgPlace:  3.90
+ 4. random, fully #3           Wins:  32 | Win%:    1.6% | AvgPlace:  1.98
+
+============================================================
+reinforce_borders_heavy & maximum_defense & maneuver_consolidate
+============================================================
+Tournament date: 2025-11-23 12:06:12
+Total games: 2000
+Finished: 1999
+Draws: 1
+Average turns: 66.0
+Average duration: 0.08s
+Total time: 0.4 minutes
+Speed: 78.4 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 1895 | Win%:   94.8% | AvgPlace:  1.16
+ 2. random, fully #3           Wins:  42 | Win%:    2.1% | AvgPlace:  1.98
+ 3. random, fully #2           Wins:  37 | Win%:    1.9% | AvgPlace:  2.94
+ 4. random, fully #1           Wins:  25 | Win%:    1.3% | AvgPlace:  3.92
+
+============================================================
+maximum_defense & invasion_pressure_balanced & maneuver_consolidate
+============================================================
+Tournament date: 2025-11-23 12:07:25
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 102.4
+Average duration: 0.11s
+Total time: 0.6 minutes
+Speed: 54.6 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 1911 | Win%:   95.5% | AvgPlace:  1.13
+ 2. random, fully #3           Wins:  35 | Win%:    1.8% | AvgPlace:  1.98
+ 3. random, fully #2           Wins:  28 | Win%:    1.4% | AvgPlace:  2.95
+ 4. random, fully #1           Wins:  26 | Win%:    1.3% | AvgPlace:  3.93
+
+============================================================
+Heuristic Probabilistic Attacker : all strategies
+============================================================
+Tournament date: 2025-11-23 12:09:04
+Total games: 2000
+Finished: 2000
+Draws: 0
+Average turns: 62.3
+Average duration: 0.08s
+Total time: 0.4 minutes
+Speed: 78.4 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 1915 | Win%:   95.8% | AvgPlace:  1.13
+ 2. random, fully #2           Wins:  34 | Win%:    1.7% | AvgPlace:  2.95
+ 3. random, fully #1           Wins:  28 | Win%:    1.4% | AvgPlace:  3.93
+ 4. random, fully #3           Wins:  23 | Win%:    1.1% | AvgPlace:  1.99

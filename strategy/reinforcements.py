@@ -37,12 +37,12 @@ def model_of_reinforcement_function (s: State,
     assert isinstance(a, Army)
     assert a in s.world.armies, "unknown army to reinforce"
     assert not is_defeated_army(s, a), "defeated army cannot be reinforced"
-    assert reinforcement_units(s, a) > 0, "reinforcements units have to be strictly positive"
+    assert reinforcement_units(s, a) > 0, "reinforcement units have to be strictly positive"
 
     result = DO_SOME_STUFF
 
     # POST-CONDITION
-    assert all(result[t].army == a for t in result), "The selected territories belong to the army"
+    assert all(territory_occupant(s, t) == a for t in result), "The selected territories belong to the army"
     assert all(result[t] > 0 for t in result), "Each selected territory must receive at least one unit"
     assert sum(result[t] for t in result) == reinforcement_units(s, a), "The sum of all the reinforcement units must be equal to {reinforcement_units(s, a)}"
 
@@ -56,8 +56,8 @@ __all__ = [
     ]
 
 
-from random import choice, randint, sample, shuffle
 from typing import Dict, List, Optional, Tuple
+from random import shuffle, randint, sample, choice
 from model.region import Unit
 from model.territory import Territory
 from model.state import State
@@ -80,7 +80,7 @@ def random_reinforcement (s: State,
     assert isinstance(a, Army)
     assert a in s.world.armies, "unknown army to reinforce"
     assert not is_defeated_army(s, a), "defeated army cannot be reinforced"
-    assert reinforcement_units(s, a) > 0, "reinforcements units have to be strictly positive"
+    assert reinforcement_units(s, a) > 0, "reinforcement units have to be strictly positive"
 
     T_a = territories_occupied_by_army(s, a)
     card_T_a = len(T_a)
@@ -109,7 +109,7 @@ def random_uniform_reinforcement (s: State,
     assert isinstance(a, Army)
     assert a in s.world.armies, "unknown army to reinforce"
     assert not is_defeated_army(s, a), "defeated army cannot be reinforced"
-    assert reinforcement_units(s, a) > 0, "reinforcements units have to be strictly positive"
+    assert reinforcement_units(s, a) > 0, "reinforcement units have to be strictly positive"
 
     u_a = reinforcement_units(s, a)
     T_a = list(territories_occupied_by_army(s, a))
@@ -125,7 +125,6 @@ def random_uniform_reinforcement (s: State,
     assert all(abs(result[t_0] - result[t_1]) <= 1 for t_0 in result for t_1 in result), "uniform distribution of the units"
 
     return result
-
 
 # ============================== Shared helpers ==============================
 
@@ -255,20 +254,15 @@ def reinforce_border_first(s: State,
         )
         return {owned[0]: units} if owned else {}
 
-    allocation: Dict[Territory, Unit] = {t: 0 for t in borders}
+    allocation: Dict[Territory, Unit] = {}
     order = sorted(borders, key=lambda t: -territory_units(s, t))
-    idx = 0
-    remaining = units
-    while remaining > 0:
-        territory = order[idx % len(order)]
-        allocation[territory] += 1
-        remaining -= 1
-        idx += 1
-
+    for i in range(units):
+        territory = order[i % len(order)]
+        allocation[territory] = allocation.get(territory, 0) + 1
     return allocation
 
 
-# ======================== Balanced Aggressor strategy ======================
+# ======================== Heuristic Probabilistic Attacker strategy ======================
 
 def _focus_slots(border_count: int) -> int:
     return min(MAX_FOCUSED_CAP, max(1, border_count))

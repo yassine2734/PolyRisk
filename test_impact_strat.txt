@@ -1,0 +1,583 @@
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        Pobablistic
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+============================================================
+Baseline : attack_if_favorable 
+============================================================
+Tournament date: 2025-11-22 21:09:11
+Total games: 1000
+Finished: 999
+Draws: 1
+Average turns: 197.8
+Average duration: 0.18s
+Total time: 0.5 minutes
+Speed: 33.2 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 754 | Win%:   75.5% | AvgPlace:  1.74
+ 2. random, fully #2           Wins:  87 | Win%:    8.7% | AvgPlace:  2.74
+ 3. random, fully #3           Wins:  80 | Win%:    8.0% | AvgPlace:  1.92
+ 4. random, fully #1           Wins:  78 | Win%:    7.8% | AvgPlace:  3.60
+
+============================================================
+reinforce_border_first
+============================================================
+Tournament date: 2025-11-22 19:20:32
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 86.9
+Average duration: 0.07s
+Total time: 0.2 minutes
+Speed: 80.8 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 881 | Win%:   88.1% | AvgPlace:  1.36
+ 2. random, fully #1           Wins:  47 | Win%:    4.7% | AvgPlace:  3.79
+ 3. random, fully #3           Wins:  41 | Win%:    4.1% | AvgPlace:  1.96
+ 4. random, fully #2           Wins:  31 | Win%:    3.1% | AvgPlace:  2.90
+
+============================================================
+random_defense
+============================================================
+Tournament date: 2025-11-22 19:22:29
+Total games: 1000
+Finished: 993
+Draws: 7
+Average turns: 288.2
+Average duration: 0.26s
+Total time: 0.7 minutes
+Speed: 23.1 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 690 | Win%:   69.5% | AvgPlace:  1.92
+ 2. random, fully #3           Wins: 113 | Win%:   11.4% | AvgPlace:  1.89
+ 3. random, fully #1           Wins:  95 | Win%:    9.6% | AvgPlace:  3.50
+ 4. random, fully #2           Wins:  95 | Win%:    9.6% | AvgPlace:  2.70
+
+============================================================
+random_uniform_invasion
+============================================================
+Tournament date: 2025-11-22 19:24:01
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 183.7
+Average duration: 0.16s
+Total time: 0.4 minutes
+Speed: 37.2 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 865 | Win%:   86.5% | AvgPlace:  1.41
+ 2. random, fully #2           Wins:  50 | Win%:    5.0% | AvgPlace:  2.85
+ 3. random, fully #3           Wins:  50 | Win%:    5.0% | AvgPlace:  1.95
+ 4. random, fully #1           Wins:  35 | Win%:    3.5% | AvgPlace:  3.79
+
+============================================================
+no_maneuver
+============================================================
+Tournament date: 2025-11-22 19:29:29
+Total games: 1000
+Finished: 999
+Draws: 1
+Average turns: 264.9
+Average duration: 0.24s
+Total time: 0.7 minutes
+Speed: 25.4 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 701 | Win%:   70.2% | AvgPlace:  1.90
+ 2. random, fully #1           Wins: 108 | Win%:   10.8% | AvgPlace:  3.49
+ 3. random, fully #2           Wins: 106 | Win%:   10.6% | AvgPlace:  2.70
+ 4. random, fully #3           Wins:  84 | Win%:    8.4% | AvgPlace:  1.92
+
+============================================================
+uniform_invasion
+============================================================
+Tournament date: 2025-11-22 19:32:51
+Total games: 1000
+Finished: 997
+Draws: 3
+Average turns: 225.3
+Average duration: 0.20s
+Total time: 0.6 minutes
+Speed: 29.4 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 718 | Win%:   72.0% | AvgPlace:  1.84
+ 2. random, fully #3           Wins: 100 | Win%:   10.0% | AvgPlace:  1.90
+ 3. random, fully #2           Wins:  93 | Win%:    9.3% | AvgPlace:  2.71
+ 4. random, fully #1           Wins:  86 | Win%:    8.6% | AvgPlace:  3.54
+
+============================================================
+reinforce_border_first & maximum_defense
+============================================================
+Tournament date: 2025-11-22 19:34:06
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 95.8
+Average duration: 0.08s
+Total time: 0.2 minutes
+Speed: 73.6 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 879 | Win%:   87.9% | AvgPlace:  1.36
+ 2. random, fully #3           Wins:  51 | Win%:    5.1% | AvgPlace:  1.95
+ 3. random, fully #1           Wins:  38 | Win%:    3.8% | AvgPlace:  3.80
+ 4. random, fully #2           Wins:  32 | Win%:    3.2% | AvgPlace:  2.88
+
+============================================================
+reinforce_border_first & uniform_invasion
+============================================================
+Tournament date: 2025-11-22 19:36:08
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 113.2
+Average duration: 0.09s
+Total time: 0.3 minutes
+Speed: 62.4 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 765 | Win%:   76.5% | AvgPlace:  1.71
+ 2. random, fully #2           Wins:  83 | Win%:    8.3% | AvgPlace:  2.75
+ 3. random, fully #3           Wins:  83 | Win%:    8.3% | AvgPlace:  1.92
+ 4. random, fully #1           Wins:  69 | Win%:    6.9% | AvgPlace:  3.63
+============================================================
+reinforce_border_first & no_maneuver
+============================================================
+Tournament date: 2025-11-22 19:36:55
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 108.5
+Average duration: 0.09s
+Total time: 0.3 minutes
+Speed: 64.0 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 781 | Win%:   78.1% | AvgPlace:  1.66
+ 2. random, fully #3           Wins:  91 | Win%:    9.1% | AvgPlace:  1.91
+ 3. random, fully #1           Wins:  71 | Win%:    7.1% | AvgPlace:  3.64
+ 4. random, fully #2           Wins:  57 | Win%:    5.7% | AvgPlace:  2.79
+
+============================================================
+maximum_defense & uniform_invasion
+============================================================
+Tournament date: 2025-11-22 19:39:37
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 160.6
+Average duration: 0.14s
+Total time: 0.4 minutes
+Speed: 42.3 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 881 | Win%:   88.1% | AvgPlace:  1.36
+ 2. random, fully #3           Wins:  45 | Win%:    4.5% | AvgPlace:  1.96
+ 3. random, fully #2           Wins:  42 | Win%:    4.2% | AvgPlace:  2.87
+ 4. random, fully #1           Wins:  32 | Win%:    3.2% | AvgPlace:  3.82
+
+============================================================
+maximum_defense & no_maneuver
+============================================================
+Tournament date: 2025-11-22 19:40:40
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 210.2
+Average duration: 0.18s
+Total time: 0.5 minutes
+Speed: 32.4 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 838 | Win%:   83.8% | AvgPlace:  1.49
+ 2. random, fully #2           Wins:  58 | Win%:    5.8% | AvgPlace:  2.83
+ 3. random, fully #3           Wins:  56 | Win%:    5.6% | AvgPlace:  1.94
+ 4. random, fully #1           Wins:  48 | Win%:    4.8% | AvgPlace:  3.74
+
+============================================================
+uniform_invasion & no_maneuver
+============================================================
+Tournament date: 2025-11-22 19:46:58
+Total games: 1000
+Finished: 994
+Draws: 6
+Average turns: 306.9
+Average duration: 0.26s
+Total time: 0.7 minutes
+Speed: 22.6 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 635 | Win%:   63.9% | AvgPlace:  2.08
+ 2. random, fully #3           Wins: 132 | Win%:   13.3% | AvgPlace:  1.87
+ 3. random, fully #1           Wins: 118 | Win%:   11.9% | AvgPlace:  3.40
+ 4. random, fully #2           Wins: 109 | Win%:   11.0% | AvgPlace:  2.65
+
+============================================================
+reinforce_border_first & maximum_defense & uniform_invasion
+============================================================
+Tournament date: 2025-11-22 20:02:05
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 97.8
+Average duration: 0.08s
+Total time: 0.2 minutes
+Speed: 72.7 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 869 | Win%:   86.9% | AvgPlace:  1.39
+ 2. random, fully #2           Wins:  52 | Win%:    5.2% | AvgPlace:  2.85
+ 3. random, fully #3           Wins:  43 | Win%:    4.3% | AvgPlace:  1.96
+ 4. random, fully #1           Wins:  36 | Win%:    3.6% | AvgPlace:  3.80
+
+============================================================
+reinforce_border_first & maximum_defense & no_maneuver
+============================================================
+Tournament date: 2025-11-22 20:03:02
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 90.5
+Average duration: 0.08s
+Total time: 0.2 minutes
+Speed: 78.1 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 871 | Win%:   87.1% | AvgPlace:  1.39
+ 2. random, fully #1           Wins:  58 | Win%:    5.8% | AvgPlace:  3.75
+ 3. random, fully #2           Wins:  38 | Win%:    3.8% | AvgPlace:  2.89
+ 4. random, fully #3           Wins:  33 | Win%:    3.3% | AvgPlace:  1.97
+
+============================================================
+reinforce_border_first & uniform_invasion & no_maneuver
+============================================================
+Tournament date: 2025-11-22 20:42:31
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 103.9
+Average duration: 0.09s
+Total time: 0.3 minutes
+Speed: 65.7 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 824 | Win%:   82.4% | AvgPlace:  1.53
+ 2. random, fully #2           Wins:  65 | Win%:    6.5% | AvgPlace:  2.82
+ 3. random, fully #1           Wins:  59 | Win%:    5.9% | AvgPlace:  3.71
+ 4. random, fully #3           Wins:  52 | Win%:    5.2% | AvgPlace:  1.95
+
+============================================================
+maximum_defense & uniform_invasion & no_maneuver
+============================================================
+Tournament date: 2025-11-22 21:02:35
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 240.5
+Average duration: 0.22s
+Total time: 0.6 minutes
+Speed: 26.8 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 852 | Win%:   85.2% | AvgPlace:  1.44
+ 2. random, fully #3           Wins:  59 | Win%:    5.9% | AvgPlace:  1.94
+ 3. random, fully #2           Wins:  49 | Win%:    4.9% | AvgPlace:  2.84
+ 4. random, fully #1           Wins:  40 | Win%:    4.0% | AvgPlace:  3.77
+
+============================================================
+Probabilistic : all strategies
+============================================================
+Tournament date: 2025-11-22 22:13:23
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 84.8
+Average duration: 0.07s
+Total time: 0.2 minutes
+Speed: 83.6 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 877 | Win%:   87.7% | AvgPlace:  1.37
+ 2. random, fully #1           Wins:  43 | Win%:    4.3% | AvgPlace:  3.79
+ 3. random, fully #2           Wins:  40 | Win%:    4.0% | AvgPlace:  2.88
+ 4. random, fully #3           Wins:  40 | Win%:    4.0% | AvgPlace:  1.96
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        Balenced Agressor
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+============================================================
+Baseline : attack_calculated
+============================================================
+Tournament date: 2025-11-22 22:25:00
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 146.0
+Average duration: 0.15s
+Total time: 0.4 minutes
+Speed: 39.8 games/sec
+
+Final standings:
+ 1. Balanced Aggressor         Wins: 894 | Win%:   89.4% | AvgPlace:  1.32
+ 2. random, fully #3           Wins:  37 | Win%:    3.7% | AvgPlace:  1.96
+ 3. random, fully #1           Wins:  35 | Win%:    3.5% | AvgPlace:  3.82
+ 4. random, fully #2           Wins:  34 | Win%:    3.4% | AvgPlace:  2.90
+
+============================================================
+reinforce_borders_heavy
+============================================================
+Tournament date: 2025-11-22 22:27:21
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 91.1
+Average duration: 0.11s
+Total time: 0.3 minutes
+Speed: 52.1 games/sec
+
+Final standings:
+ 1. Balanced Aggressor         Wins: 865 | Win%:   86.5% | AvgPlace:  1.41
+ 2. random, fully #2           Wins:  48 | Win%:    4.8% | AvgPlace:  2.86
+ 3. random, fully #3           Wins:  47 | Win%:    4.7% | AvgPlace:  1.95
+ 4. random, fully #1           Wins:  40 | Win%:    4.0% | AvgPlace:  3.79
+
+============================================================
+maximum_defense
+============================================================
+Tournament date: 2025-11-22 22:28:37
+Total games: 1000
+Finished: 999
+Draws: 1
+Average turns: 122.9
+Average duration: 0.12s
+Total time: 0.3 minutes
+Speed: 48.0 games/sec
+
+Final standings:
+ 1. Balanced Aggressor         Wins: 948 | Win%:   94.9% | AvgPlace:  1.15
+ 2. random, fully #1           Wins:  21 | Win%:    2.1% | AvgPlace:  3.91
+ 3. random, fully #2           Wins:  15 | Win%:    1.5% | AvgPlace:  2.96
+ 4. random, fully #3           Wins:  15 | Win%:    1.5% | AvgPlace:  1.98
+
+============================================================
+invasion_pressure_balanced
+============================================================
+Tournament date: 2025-11-22 22:29:49
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 127.7
+Average duration: 0.14s
+Total time: 0.4 minutes
+Speed: 43.1 games/sec
+
+Final standings:
+ 1. Balanced Aggressor         Wins: 886 | Win%:   88.6% | AvgPlace:  1.34
+ 2. random, fully #3           Wins:  42 | Win%:    4.2% | AvgPlace:  1.96
+ 3. random, fully #1           Wins:  37 | Win%:    3.7% | AvgPlace:  3.81
+ 4. random, fully #2           Wins:  35 | Win%:    3.5% | AvgPlace:  2.89
+
+============================================================
+maneuver_consolidate
+============================================================
+Tournament date: 2025-11-22 22:30:52
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 136.5
+Average duration: 0.14s
+Total time: 0.4 minutes
+Speed: 42.9 games/sec
+
+Final standings:
+ 1. Balanced Aggressor         Wins: 872 | Win%:   87.2% | AvgPlace:  1.38
+ 2. random, fully #2           Wins:  47 | Win%:    4.7% | AvgPlace:  2.86
+ 3. random, fully #3           Wins:  44 | Win%:    4.4% | AvgPlace:  1.96
+ 4. random, fully #1           Wins:  37 | Win%:    3.7% | AvgPlace:  3.80
+
+============================================================
+reinforce_borders_heavy & maximum_defense
+============================================================
+Tournament date: 2025-11-22 22:39:37
+Total games: 1000
+Finished: 999
+Draws: 1
+Average turns: 66.0
+Average duration: 0.08s
+Total time: 0.3 minutes
+Speed: 62.5 games/sec
+
+Final standings:
+ 1. Balanced Aggressor         Wins: 961 | Win%:   96.2% | AvgPlace:  1.11
+ 2. random, fully #2           Wins:  15 | Win%:    1.5% | AvgPlace:  2.96
+ 3. random, fully #1           Wins:  14 | Win%:    1.4% | AvgPlace:  3.93
+ 4. random, fully #3           Wins:   9 | Win%:    0.9% | AvgPlace:  1.99
+
+============================================================
+reinforce_borders_heavy & invasion_pressure_balanced
+============================================================
+Tournament date: 2025-11-22 22:41:30
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 84.7
+Average duration: 0.10s
+Total time: 0.3 minutes
+Speed: 60.6 games/sec
+
+Final standings:
+ 1. Balanced Aggressor         Wins: 854 | Win%:   85.4% | AvgPlace:  1.44
+ 2. random, fully #2           Wins:  61 | Win%:    6.1% | AvgPlace:  2.83
+ 3. random, fully #3           Wins:  51 | Win%:    5.1% | AvgPlace:  1.95
+ 4. random, fully #1           Wins:  34 | Win%:    3.4% | AvgPlace:  3.79
+
+============================================================
+reinforce_borders_heavy & maneuver_consolidate
+============================================================
+Tournament date: 2025-11-22 22:50:05
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 84.7
+Average duration: 0.09s
+Total time: 0.3 minutes
+Speed: 63.0 games/sec
+
+Final standings:
+ 1. Balanced Aggressor         Wins: 876 | Win%:   87.6% | AvgPlace:  1.37
+ 2. random, fully #2           Wins:  42 | Win%:    4.2% | AvgPlace:  2.88
+ 3. random, fully #1           Wins:  41 | Win%:    4.1% | AvgPlace:  3.79
+ 4. random, fully #3           Wins:  41 | Win%:    4.1% | AvgPlace:  1.96
+
+ ============================================================
+maximum_defense & invasion_pressure_balanced
+============================================================
+Tournament date: 2025-11-22 23:07:20
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 104.4
+Average duration: 0.10s
+Total time: 0.3 minutes
+Speed: 59.8 games/sec
+
+Final standings:
+ 1. Balanced Aggressor         Wins: 955 | Win%:   95.5% | AvgPlace:  1.14
+ 2. random, fully #3           Wins:  19 | Win%:    1.9% | AvgPlace:  1.98
+ 3. random, fully #2           Wins:  15 | Win%:    1.5% | AvgPlace:  2.95
+ 4. random, fully #1           Wins:  11 | Win%:    1.1% | AvgPlace:  3.93
+
+============================================================
+maximum_defense & maneuver_consolidate
+============================================================
+Tournament date: 2025-11-22 23:08:06
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 100.9
+Average duration: 0.10s
+Total time: 0.3 minutes
+Speed: 57.1 games/sec
+
+Final standings:
+ 1. Balanced Aggressor         Wins: 951 | Win%:   95.1% | AvgPlace:  1.15
+ 2. random, fully #1           Wins:  20 | Win%:    2.0% | AvgPlace:  3.91
+ 3. random, fully #3           Wins:  15 | Win%:    1.5% | AvgPlace:  1.99
+ 4. random, fully #2           Wins:  14 | Win%:    1.4% | AvgPlace:  2.96
+
+============================================================
+invasion_pressure_balanced & maneuver_consolidate
+============================================================
+Tournament date: 2025-11-22 23:09:13
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 130.1
+Average duration: 0.13s
+Total time: 0.4 minutes
+Speed: 45.2 games/sec
+
+Final standings:
+ 1. Balanced Aggressor         Wins: 871 | Win%:   87.1% | AvgPlace:  1.39
+ 2. random, fully #2           Wins:  50 | Win%:    5.0% | AvgPlace:  2.86
+ 3. random, fully #3           Wins:  41 | Win%:    4.1% | AvgPlace:  1.96
+ 4. random, fully #1           Wins:  38 | Win%:    3.8% | AvgPlace:  3.79
+
+============================================================
+reinforce_borders_heavy & maximum_defense & invasion_pressure_balanced
+============================================================
+Tournament date: 2025-11-22 23:00:49
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 70.0
+Average duration: 0.08s
+Total time: 0.2 minutes
+Speed: 71.1 games/sec
+
+Final standings:
+ 1. Balanced Aggressor         Wins: 934 | Win%:   93.4% | AvgPlace:  1.20
+ 2. random, fully #2           Wins:  27 | Win%:    2.7% | AvgPlace:  2.92
+ 3. random, fully #3           Wins:  22 | Win%:    2.2% | AvgPlace:  1.98
+ 4. random, fully #1           Wins:  17 | Win%:    1.7% | AvgPlace:  3.90
+
+============================================================
+reinforce_borders_heavy & maximum_defense & maneuver_consolidate
+============================================================
+Tournament date: 2025-11-22 23:02:55
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 62.0
+Average duration: 0.07s
+Total time: 0.2 minutes
+Speed: 87.6 games/sec
+
+Final standings:
+ 1. Balanced Aggressor         Wins: 957 | Win%:   95.7% | AvgPlace:  1.13
+ 2. random, fully #2           Wins:  16 | Win%:    1.6% | AvgPlace:  2.95
+ 3. random, fully #3           Wins:  15 | Win%:    1.5% | AvgPlace:  1.99
+ 4. random, fully #1           Wins:  12 | Win%:    1.2% | AvgPlace:  3.93
+
+============================================================
+maximum_defense & invasion_pressure_balanced & maneuver_consolidate
+============================================================
+Tournament date: 2025-11-22 23:04:49
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 102.3
+Average duration: 0.10s
+Total time: 0.3 minutes
+Speed: 58.3 games/sec
+
+Final standings:
+ 1. Balanced Aggressor         Wins: 953 | Win%:   95.3% | AvgPlace:  1.14
+ 2. random, fully #1           Wins:  18 | Win%:    1.8% | AvgPlace:  3.92
+ 3. random, fully #2           Wins:  17 | Win%:    1.7% | AvgPlace:  2.95
+ 4. random, fully #3           Wins:  12 | Win%:    1.2% | AvgPlace:  1.99
+
+============================================================
+Balenced Agressor : all strategies
+============================================================
+Tournament date: 2025-11-22 23:13:22
+Total games: 1000
+Finished: 1000
+Draws: 0
+Average turns: 62.1
+Average duration: 0.07s
+Total time: 0.2 minutes
+Speed: 83.7 games/sec
+
+Final standings:
+ 1. Balanced Aggressor         Wins: 948 | Win%:   94.8% | AvgPlace:  1.16
+ 2. random, fully #1           Wins:  20 | Win%:    2.0% | AvgPlace:  3.91
+ 3. random, fully #3           Wins:  18 | Win%:    1.8% | AvgPlace:  1.98
+ 4. random, fully #2           Wins:  14 | Win%:    1.4% | AvgPlace:  2.95

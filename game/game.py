@@ -29,7 +29,7 @@ from random import randint
 from model.region import Unit
 from model.territory import Territory
 from model.state import State
-from model.state_informations import territory_units, game_over, is_defeated_army
+from model.state_informations import territory_units, game_over, is_defeated_army, territory_occupant
 from strategy.state_actions import do_reinforce, do_bury, do_invade, do_maneuver
 # from histogram import frequency_histogram # for testing the statistics of battle w.r.t. their probabilities
 
@@ -83,7 +83,7 @@ def game (s:     State,
             I = []
             while (k := a.strategy.attack(s, a)) is not None:
                 (t_a, t_d, n_a) = k
-                n_d = a.strategy.defend(s, t_a, t_d, n_a)
+                n_d = territory_occupant(s, t_d).strategy.defend(s, t_a, t_d, n_a)
                 (p_a, p_d) = fight_random_outcome(n_a, n_d)
                 K.append((t_a, t_d, n_a, n_d, p_a, p_d))
                 if p_d == territory_units(s, t_d):

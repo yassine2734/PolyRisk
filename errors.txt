@@ -1,0 +1,119 @@
+➜ polyrisk git:(main) ✗ python3 -O tournament.py --ais 4 -2 -2 -2 -2 -2 --games 500
+Players:
+
+[4] Balanced Aggressor (Research-Based)
+[-2] neutral, fully random #1
+[-2] neutral, fully random #2
+[-2] neutral, fully random #3
+[-2] neutral, fully random #4
+[-2] neutral, fully random #5
+Games: 500 | Max turns: 500
+
+Progress: 21/500 ( 4.2%) | Speed: 1.81 games/sTraceback (most recent call last):
+File "/Users/yassine/Desktop/gitlab/polyrisk/tournament.py", line 233, in <module>
+main()
+~~~~^^
+File "/Users/yassine/Desktop/gitlab/polyrisk/tournament.py", line 208, in main
+winner, placements, turns, dur, ended = play_one_game(seatings[g], args.max_turns)
+~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/Users/yassine/Desktop/gitlab/polyrisk/tournament.py", line 88, in play_one_game
+history = list(game(s0, max_turns))
+~~~~^^^^^^^^^^^^^^^
+File "/Users/yassine/Desktop/gitlab/polyrisk/game/game.py", line 84, in game
+while (k := a.strategy.attack(s, a)) is not None:
+~~~~~~~~~~~~~~~~~^^^^^^
+File "/Users/yassine/Desktop/gitlab/polyrisk/strategy/strategy.py", line 89, in attack
+result = self._attack(s, a)
+File "/Users/yassine/Desktop/gitlab/polyrisk/strategy/attacks.py", line 312, in attack_calculated
+prob = _balanced_conquest_probability(my_units, enemy_units)
+File "/Users/yassine/Desktop/gitlab/polyrisk/strategy/attacks.py", line 144, in _balanced_conquest_probability
+probability += weight * _balanced_conquest_probability(
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+attackers - loss_a, defenders - loss_d
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+)
+^
+File "/Users/yassine/Desktop/gitlab/polyrisk/strategy/attacks.py", line 144, in _balanced_conquest_probability
+probability += weight * _balanced_conquest_probability(
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+attackers - loss_a, defenders - loss_d
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+)
+^
+File "/Users/yassine/Desktop/gitlab/polyrisk/strategy/attacks.py", line 144, in _balanced_conquest_probability
+probability += weight * _balanced_conquest_probability(
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+attackers - loss_a, defenders - loss_d
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+)
+^
+[Previous line repeated 991 more times]
+RecursionError: maximum recursion depth exceeded
+===================================================================================================================
+SOLUTION :
+===================================================================================================================
+Le crash vient du calcul récursif des probabilités d’attaque dans la stratégie “Balanced Aggressor”.
+
+Cause: _balanced_conquest_probability est récursive; pour de très gros effectifs (attaquants + défenseurs ≳ 1000), la profondeur de pile dépasse la limite Python (~1000), d’où le RecursionError.
+Où ça se produit:
+Appel: strategy/attacks.py (line 312) (dans attack_calculated)
+Fonction récursive: strategy/attacks.py (line 128) → récursion à strategy/attacks.py (line 144)
+Le stack montre l’enchaînement: tournament.py (line 208) → game/game.py (line 84) → strategy/strategy.py (line 89) → strategy/attacks.py (line 312) → _balanced_conquest_probability.
+Pourquoi ça arrive maintenant
+
+Les parties longues et figées peuvent accumuler des armées énormes. Pour ces gros nombres, l’évaluation récursive (même mémoïsée) creuse une branche par “round” de dés; la profondeur maximale ~ (attaquants − 1) + défenseurs peut dépasser 1000.
+Correctifs recommandés
+
+Remplacer la récursion par un DP itératif (robuste)
+Même récurrence, mais calculée en tableaux avec “lignes roulantes” (mémoire O(D), pas de récursion).
+
+Drop-in pour la fonction actuelle:
+
+strategy/attacks.py:128
+@lru_cache(maxsize=200_000)
+def _balanced_conquest_probability(attackers: int, defenders: int) -> float:
+if defenders <= 0:
+return 1.0
+if attackers <= 1:
+return 0.0
+===================================================================================================================
+===================================================================================================================
+===================================================================================================================
+===================================================================================================================
+
+
+
+===================================================================================================================
+SOLUTION :
+===================================================================================================================
+
+
+
+===================================================================================================================
+===================================================================================================================
+===================================================================================================================
+===================================================================================================================
+
+
+
+
+
+
+===================================================================================================================
+===================================================================================================================
+===================================================================================================================
+===================================================================================================================
+
+
+
+===================================================================================================================
+SOLUTION :
+===================================================================================================================
+
+
+
+===================================================================================================================
+===================================================================================================================
+===================================================================================================================
+===================================================================================================================
+

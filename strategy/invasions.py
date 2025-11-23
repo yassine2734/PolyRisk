@@ -59,16 +59,20 @@ def model_of_invasion_function (s:   State,
 """
 
 
-__all__ = ['uniform_invasion', 'invasion_pressure_balanced']
-
+__all__ = [
+    'minimal_invasion',
+    'random_uniform_invasion',
+    'uniform_invasion', 
+    'invasion_pressure_balanced'
+    ]
 
 from random import randint
 from typing import List
 from model.region import Unit
 from model.territory import Territory
 from model.state import State
-from model.army import Army
 from model.state_informations import territory_occupant, territory_units
+from model.army import Army
 
 
 def minimal_invasion (s:   State,
@@ -179,7 +183,7 @@ def uniform_invasion (s:   State,
     return result
 
 
-# ======================== Balanced Aggressor strategy ======================
+# ======================== Heuristic Probabilistic Attacker strategy ======================
 
 def invasion_pressure_balanced (s:   State,
                                 t_a: Territory,

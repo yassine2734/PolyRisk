@@ -65,6 +65,8 @@ def never_invade (s:   State,
     assert isinstance(s, State)
     assert isinstance(t_a, Territory)
     assert isinstance(t_d, Territory)
+    assert isinstance(n_a, Unit)
+    assert isinstance(p_a, Unit)
     assert t_a in s.state
     assert t_d in s.state
     assert territory_occupant(s, t_a) != territory_occupant(s, t_d), "the armies of the two territories must be distinct"

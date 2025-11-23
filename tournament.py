@@ -2,15 +2,17 @@
 Simplest possible Risk AI tournament runner — with live progress counter and text results.
 
 Usage:
-  python tournament_simple.py --ais 3 1 1 2 --games 200 --max-turns 500
+  python tournament_simple.py --ais 3 1 1 2 --games 200 --max-turns 500 --workers 8
 """
 
 import argparse
 import random
 import time
+import os
 from collections import Counter, defaultdict
 from typing import Dict, List, Optional, Tuple
 from datetime import datetime
+from concurrent.futures import ProcessPoolExecutor, as_completed
 
 # --- import your project bits ---
 from model.world import World
@@ -23,7 +25,7 @@ from game.setup import random_initial_state
 from ais.neutrals import strategy_neutral_fully_random, strategy_neutral_uniform_random
 from ais.randoms import strategy_fully_random, strategy_uniform_random
 from ais.probabilistic import strategy_probabilistic
-from ais.balanced_aggressor import strategy_balanced_aggressor
+from ais.HeuristicProbabilisticAttacker import strategy_heuristic_probabilistic_attacker
 
 # Map numeric ids -> strategies
 AIs = {
@@ -32,7 +34,7 @@ AIs = {
      1: strategy_fully_random,
      2: strategy_uniform_random,
      3: strategy_probabilistic,
-     4: strategy_balanced_aggressor,
+     4: strategy_heuristic_probabilistic_attacker,
 }
 
 # ----------------------------
@@ -64,11 +66,21 @@ def assign_unique_names(ai_indices: List[int]) -> List[str]:
     return out
 
 # ----------------------------
-# One game
+# One game (worker function)
 # ----------------------------
 
-def play_one_game(ai_order: List[int], max_turns: int) -> Tuple[Optional[str], Dict[str, int], int, float, bool]:
-    """Runs a single game and returns (winner, placements, turns, duration, ended)."""
+def play_one_game(args: Tuple[List[int], int, int]) -> Tuple[Optional[str], Dict[str, int], int, float, bool]:
+    """
+    Runs a single game and returns (winner, placements, turns, duration, ended).
+
+    args = (ai_order, max_turns, seed)
+    This signature is picklable for multiprocessing.
+    """
+    ai_order, max_turns, seed = args
+
+    # graine locale différente par partie
+    random.seed(seed)
+
     t0 = time.time()
     strategies = [AIs[idx] for idx in ai_order]
     world = World(strategies, *risk_map())
@@ -185,6 +197,8 @@ def main():
     ap.add_argument("--ais", type=int, nargs="+", required=True, help="AI indices (>=2 players)")
     ap.add_argument("--games", type=int, default=200)
     ap.add_argument("--max-turns", type=int, default=500)
+    ap.add_argument("--workers", type=int, default=None,
+                    help="Number of parallel worker processes (default: CPU count)")
     args = ap.parse_args()
 
     if any(i not in AIs for i in args.ais):
@@ -203,16 +217,42 @@ def main():
     stats = Stats(roster_names)
     seatings = balanced_seatings(args.ais, args.games)
 
-    t0 = time.time()
+    # Préparer les paramètres pour chaque partie avec graine différente
+    game_args: List[Tuple[List[int], int, int]] = []
     for g in range(args.games):
-        winner, placements, turns, dur, ended = play_one_game(seatings[g], args.max_turns)
-        stats.add(winner, placements, turns, dur, ended)
+        seed = random.randrange(1 << 30)
+        game_args.append((seatings[g], args.max_turns, seed))
 
-        done = g + 1
-        pct = done / args.games * 100
-        elapsed = time.time() - t0
-        speed = done / elapsed if elapsed > 0 else 0
-        print(f"\rProgress: {done}/{args.games} ({pct:5.1f}%) | Speed: {speed:5.2f} games/s", end="", flush=True)
+    n_workers = args.workers or os.cpu_count() or 1
+    print(f"Using {n_workers} worker process(es).\n")
+
+    t0 = time.time()
+
+    # Mode séquentiel si 1 worker (moins d'overhead)
+    if n_workers == 1:
+        for g, ga in enumerate(game_args):
+            winner, placements, turns, dur, ended = play_one_game(ga)
+            stats.add(winner, placements, turns, dur, ended)
+
+            done = g + 1
+            pct = done / args.games * 100
+            elapsed = time.time() - t0
+            speed = done / elapsed if elapsed > 0 else 0
+            print(f"\rProgress: {done}/{args.games} ({pct:5.1f}%) | Speed: {speed:5.2f} games/s", end="", flush=True)
+    else:
+        # Exécution parallèle
+        with ProcessPoolExecutor(max_workers=n_workers) as executor:
+            futures = [executor.submit(play_one_game, ga) for ga in game_args]
+            done = 0
+            for fut in as_completed(futures):
+                winner, placements, turns, dur, ended = fut.result()
+                stats.add(winner, placements, turns, dur, ended)
+
+                done += 1
+                pct = done / args.games * 100
+                elapsed = time.time() - t0
+                speed = done / elapsed if elapsed > 0 else 0
+                print(f"\rProgress: {done}/{args.games} ({pct:5.1f}%) | Speed: {speed:5.2f} games/s", end="", flush=True)
 
     print()  # newline
     total = time.time() - t0

@@ -1,0 +1,245 @@
+============================================================
+Head-to-Head des Champions avec random fully
+============================================================
+# Config exacte dans le code :
+# 3 = probabilistic avec : reinforce_border_first  + maximum_defense + no_maneuver
+# 4 = Heuristic Probabilistic Attacker (all strategies)
+# 1 = random fully
+
+============================================================
+Tournament date: 2025-11-23 13:03:22
+Total games: 10000
+Finished: 10000
+Draws: 0
+Average turns: 60.7
+Average duration: 0.07s
+Total time: 2.0 minutes
+Speed: 82.7 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 5969 | Win%:   59.7% | AvgPlace:  2.21
+ 2. probabilistic              Wins: 3988 | Win%:   39.9% | AvgPlace:  2.80
+ 3. random, fully #1           Wins:  22 | Win%:    0.2% | AvgPlace:  2.99
+ 4. random, fully #2           Wins:  21 | Win%:    0.2% | AvgPlace:  2.00
+
+============================================================
+Tournament date: 2025-11-23 13:10:46
+Total games: 10000
+Finished: 10000
+Draws: 0
+Average turns: 59.8
+Average duration: 0.07s
+Total time: 1.9 minutes
+Speed: 86.3 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 5723 | Win%:   57.2% | AvgPlace:  2.28
+ 2. probabilistic              Wins: 4257 | Win%:   42.6% | AvgPlace:  2.72
+ 3. random, uniform #2         Wins:  13 | Win%:    0.1% | AvgPlace:  2.00
+ 4. random, uniform #1         Wins:   7 | Win%:    0.1% | AvgPlace:  3.00
+
+
+
+
+
+============================================================
+Head-to-Head des Champions sans randoms
+============================================================
+# Config exacte dans le code :
+# 3 = probabilistic avec : reinforce_border_first  + maximum_defense + no_maneuver
+# 4 = Heuristic Probabilistic Attacker (all strategies)
+============================================================
+Tournament date: 2025-11-23 13:15:26
+Total games: 10000
+Finished: 9997
+Draws: 3
+Average turns: 28.9
+Average duration: 0.06s
+Total time: 2.4 minutes
+Speed: 69.6 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 5897 | Win%:   59.0% | AvgPlace:  1.41
+ 2. Heuristic Probabilistic Attacker  Wins: 4100 | Win%:   41.0% | AvgPlace:  1.59
+
+Note : i was shocked how Probablistic in the H2H test, so tried to set the same reinforce strategie 
+of Probablistic in Heuristic Probabilistic Attacker 
+
+============================================================
+# Config exacte dans le code :
+# 3 = probabilistic avec : reinforce_border_first  + maximum_defense + no_maneuver
+# 4 = Heuristic Probabilistic Attacker (all strategies) but with reinforce_border_first
+============================================================
+Tournament date: 2025-11-23 13:39:41
+Total games: 10000
+Finished: 9960
+Draws: 40
+Average turns: 34.6
+Average duration: 0.60s
+Total time: 18.7 minutes
+Speed: 8.9 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 4995 | Win%:   50.2% | AvgPlace:  1.50
+ 2. Heuristic Probabilistic Attacker  Wins: 4965 | Win%:   49.8% | AvgPlace:  1.50
+
+
+ Note : as i expected the result will be more equivalent in this case
+
+
+ 
+
+
+
+
+============================================================
+python3 tournament.py --ais 4 1 1 1 --games 10000  --workers 6
+============================================================
+reinforce_border_first
+============================================================
+Tournament date: 2025-11-23 13:47:14
+Total games: 10000
+Finished: 9999
+Draws: 1
+Average turns: 59.0
+Average duration: 0.06s
+Total time: 1.8 minutes
+Speed: 95.0 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 9589 | Win%:   95.9% | AvgPlace:  1.12
+ 2. random, fully #3           Wins: 141 | Win%:    1.4% | AvgPlace:  1.99
+ 3. random, fully #1           Wins: 137 | Win%:    1.4% | AvgPlace:  3.93
+ 4. random, fully #2           Wins: 132 | Win%:    1.3% | AvgPlace:  2.96
+
+============================================================
+reinforce_borders_heavy
+============================================================
+Tournament date: 2025-11-23 13:49:35
+Total games: 10000
+Finished: 10000
+Draws: 0
+Average turns: 61.8
+Average duration: 0.08s
+Total time: 2.1 minutes
+Speed: 77.6 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 9518 | Win%:   95.2% | AvgPlace:  1.14
+ 2. random, fully #3           Wins: 168 | Win%:    1.7% | AvgPlace:  1.98
+ 3. random, fully #1           Wins: 159 | Win%:    1.6% | AvgPlace:  3.92
+ 4. random, fully #2           Wins: 155 | Win%:    1.6% | AvgPlace:  2.95
+
+
+
+
+============================================================
+ Impact de maximum_defense
+============================================================
+# Probabilistic avec/sans maximum_defense
+Version A : avec maximum_defense
+
+============================================================
+Tournament date: 2025-11-23 14:01:32
+Total games: 10000
+Finished: 10000
+Draws: 0
+Average turns: 71.2
+Average duration: 0.06s
+Total time: 1.8 minutes
+Speed: 94.8 games/sec
+
+Final standings:
+ 1. probabilistic #1           Wins: 5153 | Win%:   51.5% | AvgPlace:  2.45
+ 2. probabilistic #2           Wins: 4817 | Win%:   48.2% | AvgPlace:  2.55
+ 3. random, fully #2           Wins:  16 | Win%:    0.2% | AvgPlace:  2.00
+ 4. random, fully #1           Wins:  14 | Win%:    0.1% | AvgPlace:  3.00
+
+
+============================================================
+# Version B : sans maximum_defense (random_defense)
+============================================================
+Tournament date: 2025-11-23 14:04:25
+Total games: 10000
+Finished: 10000
+Draws: 0
+Average turns: 85.5
+Average duration: 0.08s
+Total time: 2.1 minutes
+Speed: 78.5 games/sec
+
+Final standings:
+ 1. probabilistic #1           Wins: 4994 | Win%:   49.9% | AvgPlace:  2.50
+ 2. probabilistic #2           Wins: 4806 | Win%:   48.1% | AvgPlace:  2.54
+ 3. random, fully #2           Wins: 106 | Win%:    1.1% | AvgPlace:  1.99
+ 4. random, fully #1           Wins:  94 | Win%:    0.9% | AvgPlace:  2.97
+
+
+
+
+
+============================================================
+Scalability test
+============================================================
+
+============================================================
+Tournament date: 2025-11-23 14:17:57
+Total games: 10000
+Finished: 9998
+Draws: 2
+Average turns: 28.7
+Average duration: 0.08s
+Total time: 4.8 minutes
+Speed: 34.6 games/sec
+
+Final standings:
+ 1. probabilistic              Wins: 5637 | Win%:   56.4% | AvgPlace:  1.44
+ 2. Heuristic Probabilistic Attacker  Wins: 4361 | Win%:   43.6% | AvgPlace:  1.56
+
+============================================================
+Tournament date: 2025-11-23 14:20:30
+Total games: 10000
+Finished: 9999
+Draws: 1
+Average turns: 45.9
+Average duration: 0.06s
+Total time: 1.6 minutes
+Speed: 103.9 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 5091 | Win%:   50.9% | AvgPlace:  1.98
+ 2. probabilistic              Wins: 4871 | Win%:   48.7% | AvgPlace:  2.02
+ 3. random, fully              Wins:  37 | Win%:    0.4% | AvgPlace:  2.00
+
+============================================================
+Tournament date: 2025-11-23 14:22:56
+Total games: 10000
+Finished: 10000
+Draws: 0
+Average turns: 59.9
+Average duration: 0.07s
+Total time: 1.9 minutes
+Speed: 86.9 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 5785 | Win%:   57.9% | AvgPlace:  2.26
+ 2. probabilistic              Wins: 4146 | Win%:   41.5% | AvgPlace:  2.75
+ 3. random, fully #2           Wins:  42 | Win%:    0.4% | AvgPlace:  2.00
+ 4. random, fully #1           Wins:  27 | Win%:    0.3% | AvgPlace:  2.99
+
+============================================================
+Tournament date: 2025-11-23 14:25:37
+Total games: 10000
+Finished: 10000
+Draws: 0
+Average turns: 70.3
+Average duration: 0.08s
+Total time: 2.2 minutes
+Speed: 75.5 games/sec
+
+Final standings:
+ 1. Heuristic Probabilistic Attacker  Wins: 6299 | Win%:   63.0% | AvgPlace:  2.48
+ 2. probabilistic              Wins: 3601 | Win%:   36.0% | AvgPlace:  3.55
+ 3. random, fully #2           Wins:  37 | Win%:    0.4% | AvgPlace:  2.99
+ 4. random, fully #3           Wins:  34 | Win%:    0.3% | AvgPlace:  2.00
+ 5. random, fully #1           Wins:  29 | Win%:    0.3% | AvgPlace:  3.98

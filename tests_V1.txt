@@ -1,0 +1,604 @@
+A. Clarté de la traduction des algorithmes
+Test A.1 : Validation des préconditions/postconditions
+# Objectif : Vérifier que les assertions fonctionnent correctement
+
+# Sans optimisation (vérifie toutes les assertions)
+python polyrisk.py
+
+# Avec optimisation (désactive les assertions)
+python -O polyrisk.py
+
+# Mesurer la différence de temps
+time python polyrisk.py
+time python -O polyrisk.py
+
+
+===================================================================================================================
+B. Prise en compte d'heuristiques et leur argumentation
+Test B.1 : Impact de chaque heuristique (Tests d'ablation)
+===================================================================================================================
+# B.1.1 : Baseline complète
+
+
+============================================================
+                        Pobablistic
+============================================================
+============================================================
+Tournament date: 2025-11-12 18:48:33
+Total games: 1000
+Finished: 975
+Draws: 25
+Average turns: 227.3
+Average duration: 0.18s
+Total time: 2.9 minutes
+Speed: 5.7 games/sec
+
+Final standings:
+ 1. probabilistic #1           Wins: 525 | Win%:   53.8% | AvgPlace:  2.39
+ 2. probabilistic #2           Wins: 450 | Win%:   46.2% | AvgPlace:  2.61
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  2.98
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.02
+===================================================================================================================
+# B.1.2 : Sans heuristique de renforcement des frontières
+# probabilistic.py : reinforce_border_first → random_uniform_reinforcement
+
+============================================================
+Tournament date: 2025-11-12 18:59:46
+Total games: 1000
+Finished: 164
+Draws: 836
+Average turns: 1086.7
+Average duration: 0.35s
+Total time: 5.8 minutes
+Speed: 2.9 games/sec
+
+Final standings:
+ 1. probabilistic #1           Wins:  92 | Win%:   56.1% | AvgPlace:  1.77
+ 2. probabilistic #2           Wins:  72 | Win%:   43.9% | AvgPlace:  1.69
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.75
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.80
+
+===================================================================================================================
+# B.1.3 : Sans heuristique d'attaque probabiliste (seuil 65%)
+# attacks.py : TAU_ATTACK = 0.5 (au lieu de 0.65)
+
+============================================================
+Tournament date: 2025-11-12 21:54:44
+Total games: 1000
+Finished: 938
+Draws: 62
+Average turns: 314.2
+Average duration: 0.10s
+Total time: 1.6 minutes
+Speed: 10.1 games/sec
+
+Final standings:
+ 1. probabilistic #1           Wins: 509 | Win%:   54.3% | AvgPlace:  2.39
+ 2. probabilistic #2           Wins: 427 | Win%:   45.5% | AvgPlace:  2.58
+ 3. random, uniform #1         Wins:   1 | Win%:    0.1% | AvgPlace:  2.99
+ 4. random, uniform #2         Wins:   1 | Win%:    0.1% | AvgPlace:  2.03
+
+===================================================================================================================
+# B.1.4 : Sans défense maximale
+# probabilistic.py : maximum_defense → random_defense
+============================================================
+Tournament date: 2025-11-12 21:59:20
+Total games: 1000
+Finished: 961
+Draws: 39
+Average turns: 281.5
+Average duration: 0.10s
+Total time: 1.6 minutes
+Speed: 10.3 games/sec
+
+Final standings:
+ 1. probabilistic #1           Wins: 518 | Win%:   53.9% | AvgPlace:  2.39
+ 2. probabilistic #2           Wins: 439 | Win%:   45.7% | AvgPlace:  2.64
+ 3. random, uniform #2         Wins:   3 | Win%:    0.3% | AvgPlace:  2.00
+ 4. random, uniform #1         Wins:   1 | Win%:    0.1% | AvgPlace:  2.97
+
+ 
+============================================================
+                    Balanced Agressor
+============================================================
+
+# B.1.5 : Baseline complète
+============================================================
+Tournament date: 2025-11-12 23:05:57
+Total games: 500
+Finished: 392
+Draws: 108
+Average turns: 248.6
+Average duration: 0.07s
+Total time: 0.6 minutes
+Speed: 15.1 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins: 231 | Win%:   58.9% | AvgPlace:  2.05
+ 2. Balanced Aggressor (Research-Based) #2  Wins: 161 | Win%:   41.1% | AvgPlace:  2.52
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.22
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.22
+
+===================================================================================================================
+
+# B.1.6 : Sans heuristique de renforcement pondéré des frontières
+# reinforcements.py : reinforce_borders_heavy → reinforce_border_first
+============================================================
+Tournament date: 2025-11-12 23:29:07
+Total games: 500
+Finished: 280
+Draws: 220
+Average turns: 474.0
+Average duration: 0.09s
+Total time: 0.7 minutes
+Speed: 11.2 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins: 167 | Win%:   59.6% | AvgPlace:  1.84
+ 2. Balanced Aggressor (Research-Based) #2  Wins: 112 | Win%:   40.0% | AvgPlace:  2.28
+ 3. random, uniform #1         Wins:   1 | Win%:    0.4% | AvgPlace:  3.44
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.44
+
+===================================================================================================================
+
+# B.1.7 : Sans ratio 2:1 minimum pour attaquer
+# /attacks.py dans attack_calculated : ratio_required = 1.0
+============================================================
+Tournament date: 2025-11-12 23:33:08
+Total games: 500
+Finished: 500
+Draws: 0
+Average turns: 38.1
+Average duration: 0.02s
+Total time: 0.2 minutes
+Speed: 49.0 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins: 298 | Win%:   59.6% | AvgPlace:  2.21
+ 2. Balanced Aggressor (Research-Based) #2  Wins: 202 | Win%:   40.4% | AvgPlace:  2.79
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.00
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.00
+
+===================================================================================================================
+
+# B.1.8 : Sans bonus de complétion de région
+# Commenter les lignes region_bonus dans attack_calculated
+============================================================
+Tournament date: 2025-11-12 23:38:23
+Total games: 200
+Finished: 141
+Draws: 59
+Average turns: 326.3
+Average duration: 0.09s
+Total time: 0.3 minutes
+Speed: 11.6 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins:  98 | Win%:   69.5% | AvgPlace:  1.78
+ 2. Balanced Aggressor (Research-Based) #2  Wins:  43 | Win%:   30.5% | AvgPlace:  2.62
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.29
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.29
+
+===================================================================================================================
+
+# B.1.9 : Sans heuristique d'invasion adaptative
+# invasions.py : invasion_pressure_balanced → uniform_invasion
+
+============================================================
+Tournament date: 2025-11-12 23:46:07
+Total games: 500
+Finished: 393
+Draws: 107
+Average turns: 272.1
+Average duration: 0.12s
+Total time: 1.0 minutes
+Speed: 8.1 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins: 223 | Win%:   56.7% | AvgPlace:  2.14
+ 2. Balanced Aggressor (Research-Based) #2  Wins: 167 | Win%:   42.5% | AvgPlace:  2.44
+ 3. random, uniform #1         Wins:   2 | Win%:    0.5% | AvgPlace:  3.20
+ 4. random, uniform #2         Wins:   1 | Win%:    0.3% | AvgPlace:  2.21
+
+===================================================================================================================
+
+# B.1.10 : Sans consolidation des frontières (maneuver)
+# /maneuvers.py : maneuver_consolidate → no_maneuver
+============================================================
+Tournament date: 2025-11-12 23:52:14
+Total games: 500
+Finished: 358
+Draws: 142
+Average turns: 314.8
+Average duration: 0.07s
+Total time: 0.6 minutes
+Speed: 13.7 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins: 222 | Win%:   62.0% | AvgPlace:  1.94
+ 2. Balanced Aggressor (Research-Based) #2  Wins: 136 | Win%:   38.0% | AvgPlace:  2.49
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.28
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.28
+
+
+===================================================================================================================
+Test B.2 : Sensibilité des paramètres heuristiques
+===================================================================================================================
+
+# B.2.1 : Seuil d'attaque probabiliste
+# Tester TAU_ATTACK = 0.50, 0.55, 0.60, 0.65, 0.70, 0.75
+
+============================================================
+Tournament date: 2025-11-13 00:06:41
+Total games: 500
+Finished: 465
+Draws: 35
+Average turns: 313.2
+Average duration: 0.10s
+Total time: 0.8 minutes
+Speed: 10.3 games/sec
+
+Final standings:
+ 1. probabilistic #1           Wins: 248 | Win%:   53.3% | AvgPlace:  2.42
+ 2. probabilistic #2           Wins: 217 | Win%:   46.7% | AvgPlace:  2.57
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  2.97
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.04
+
+============================================================
+Tournament date: 2025-11-13 00:09:06
+Total games: 500
+Finished: 424
+Draws: 76
+Average turns: 439.8
+Average duration: 0.13s
+Total time: 1.1 minutes
+Speed: 7.5 games/sec
+
+Final standings:
+ 1. probabilistic #1           Wins: 242 | Win%:   57.1% | AvgPlace:  2.35
+ 2. probabilistic #2           Wins: 181 | Win%:   42.7% | AvgPlace:  2.61
+ 3. random, uniform #1         Wins:   1 | Win%:    0.2% | AvgPlace:  2.95
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.10
+
+============================================================
+Tournament date: 2025-11-13 00:10:30
+Total games: 500
+Finished: 470
+Draws: 30
+Average turns: 341.8
+Average duration: 0.11s
+Total time: 0.9 minutes
+Speed: 9.3 games/sec
+
+Final standings:
+ 1. probabilistic #1           Wins: 270 | Win%:   57.4% | AvgPlace:  2.29
+ 2. probabilistic #2           Wins: 199 | Win%:   42.3% | AvgPlace:  2.70
+ 3. random, uniform #2         Wins:   1 | Win%:    0.2% | AvgPlace:  2.03
+ 4. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  2.99
+
+============================================================
+Tournament date: 2025-11-13 00:11:26
+Total games: 500
+Finished: 480
+Draws: 20
+Average turns: 283.2
+Average duration: 0.09s
+Total time: 0.7 minutes
+Speed: 11.3 games/sec
+
+Final standings:
+ 1. probabilistic #1           Wins: 246 | Win%:   51.2% | AvgPlace:  2.48
+ 2. probabilistic #2           Wins: 234 | Win%:   48.8% | AvgPlace:  2.54
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  2.98
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.01
+
+============================================================
+Tournament date: 2025-11-13 00:12:14
+Total games: 500
+Finished: 495
+Draws: 5
+Average turns: 149.4
+Average duration: 0.05s
+Total time: 0.4 minutes
+Speed: 18.9 games/sec
+
+Final standings:
+ 1. probabilistic #1           Wins: 279 | Win%:   56.4% | AvgPlace:  2.31
+ 2. probabilistic #2           Wins: 216 | Win%:   43.6% | AvgPlace:  2.70
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  2.99
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.00
+
+============================================================
+Tournament date: 2025-11-13 00:12:58
+Total games: 500
+Finished: 491
+Draws: 9
+Average turns: 187.8
+Average duration: 0.06s
+Total time: 0.5 minutes
+Speed: 15.5 games/sec
+
+Final standings:
+ 1. probabilistic #1           Wins: 253 | Win%:   51.5% | AvgPlace:  2.47
+ 2. probabilistic #2           Wins: 238 | Win%:   48.5% | AvgPlace:  2.55
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  2.98
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.00
+
+
+
+
+===================================================================================================================
+# B.2.2 : Ratio d'attaque minimum
+# Tester ratio_required = 1.5, 2.0, 2.5, 3.0
+===================================================================================================================
+
+============================================================
+Tournament date: 2025-11-13 00:22:57
+Total games: 500
+Finished: 459
+Draws: 41
+Average turns: 116.7
+Average duration: 0.04s
+Total time: 0.3 minutes
+Speed: 26.9 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins: 266 | Win%:   58.0% | AvgPlace:  2.19
+ 2. Balanced Aggressor (Research-Based) #2  Wins: 193 | Win%:   42.0% | AvgPlace:  2.64
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.08
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.08
+
+============================================================
+Tournament date: 2025-11-13 00:25:05
+Total games: 300
+Finished: 232
+Draws: 68
+Average turns: 262.0
+Average duration: 0.07s
+Total time: 0.4 minutes
+Speed: 14.0 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins: 154 | Win%:   66.4% | AvgPlace:  1.87
+ 2. Balanced Aggressor (Research-Based) #2  Wins:  78 | Win%:   33.6% | AvgPlace:  2.67
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.23
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.23
+
+============================================================
+Tournament date: 2025-11-13 00:27:56
+Total games: 100
+Finished: 61
+Draws: 39
+Average turns: 429.9
+Average duration: 0.12s
+Total time: 0.2 minutes
+Speed: 8.2 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins:  40 | Win%:   65.6% | AvgPlace:  1.80
+ 2. Balanced Aggressor (Research-Based) #2  Wins:  21 | Win%:   34.4% | AvgPlace:  2.42
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.39
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.39
+
+============================================================
+Tournament date: 2025-11-13 00:30:59
+Total games: 100
+Finished: 49
+Draws: 51
+Average turns: 565.5
+Average duration: 0.19s
+Total time: 0.3 minutes
+Speed: 5.3 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins:  30 | Win%:   61.2% | AvgPlace:  1.79
+ 2. Balanced Aggressor (Research-Based) #2  Wins:  18 | Win%:   36.7% | AvgPlace:  2.21
+ 3. random, uniform #2         Wins:   1 | Win%:    2.0% | AvgPlace:  2.50
+ 4. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.50
+
+===================================================================================================================
+
+# B.2.3 : Budget de renforcement intérieur
+# Tester interior_budget = units//3, units//5, units//7, units//10 dans reinforce_borders_heavy
+
+
+============================================================
+Tournament date: 2025-11-13 00:38:29
+Total games: 200
+Finished: 164
+Draws: 36
+Average turns: 215.8
+Average duration: 0.14s
+Total time: 0.5 minutes
+Speed: 7.0 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins:  99 | Win%:   60.4% | AvgPlace:  2.05
+ 2. Balanced Aggressor (Research-Based) #2  Wins:  65 | Win%:   39.6% | AvgPlace:  2.59
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.18
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.18
+
+============================================================
+Tournament date: 2025-11-13 00:38:57
+Total games: 200
+Finished: 159
+Draws: 41
+Average turns: 238.4
+Average duration: 0.07s
+Total time: 0.2 minutes
+Speed: 15.2 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins: 105 | Win%:   66.0% | AvgPlace:  1.91
+ 2. Balanced Aggressor (Research-Based) #2  Wins:  54 | Win%:   34.0% | AvgPlace:  2.68
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.21
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.21
+
+============================================================
+Tournament date: 2025-11-13 00:39:22
+Total games: 200
+Finished: 161
+Draws: 39
+Average turns: 225.0
+Average duration: 0.06s
+Total time: 0.2 minutes
+Speed: 15.7 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins: 104 | Win%:   64.6% | AvgPlace:  1.94
+ 2. Balanced Aggressor (Research-Based) #2  Wins:  57 | Win%:   35.4% | AvgPlace:  2.67
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.19
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.19
+
+============================================================
+Tournament date: 2025-11-13 00:39:49
+Total games: 200
+Finished: 162
+Draws: 38
+Average turns: 221.0
+Average duration: 0.07s
+Total time: 0.2 minutes
+Speed: 14.6 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins: 105 | Win%:   64.8% | AvgPlace:  1.95
+ 2. Balanced Aggressor (Research-Based) #2  Wins:  57 | Win%:   35.2% | AvgPlace:  2.67
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.19
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.19
+
+
+===================================================================================================================
+C. Performances observées
+Test C.1 : Performances absolues
+===================================================================================================================
+
+# C.1.1 : Grande échelle pour stabilité statistique
+============================================================
+Tournament date: 2025-11-13 08:51:26
+Total games: 150
+Finished: 150
+Draws: 0
+Average turns: 59.0
+Average duration: 0.03s
+Total time: 0.1 minutes
+Speed: 39.0 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based)  Wins: 114 | Win%:   76.0% | AvgPlace:  1.72
+ 2. probabilistic              Wins:  35 | Win%:   23.3% | AvgPlace:  3.29
+ 3. random, fully              Wins:   1 | Win%:    0.7% | AvgPlace:  2.99
+ 4. random, uniform            Wins:   0 | Win%:    0.0% | AvgPlace:  2.00
+
+
+
+===================================================================================================================
+# C.1.2 : Comparaison head-to-head
+
+============================================================
+Tournament date: 2025-11-13 08:54:26
+Total games: 150
+Finished: 124
+Draws: 26
+Average turns: 227.5
+Average duration: 0.07s
+Total time: 0.2 minutes
+Speed: 13.9 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins:  49 | Win%:   39.5% | AvgPlace:  2.59
+ 2. Balanced Aggressor (Research-Based) #2  Wins:  37 | Win%:   29.8% | AvgPlace:  2.57
+ 3. probabilistic #1           Wins:  20 | Win%:   16.1% | AvgPlace:  2.79
+ 4. probabilistic #2           Wins:  18 | Win%:   14.5% | AvgPlace:  2.05
+
+===================================================================================================================
+
+# C.1.3 : Contre baseline aléatoire
+============================================================
+Tournament date: 2025-11-13 08:58:32
+Total games: 200
+Finished: 153
+Draws: 47
+Average turns: 268.1
+Average duration: 0.07s
+Total time: 0.2 minutes
+Speed: 14.8 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based) #1  Wins:  88 | Win%:   57.5% | AvgPlace:  2.04
+ 2. Balanced Aggressor (Research-Based) #2  Wins:  65 | Win%:   42.5% | AvgPlace:  2.48
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.23
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.23
+
+
+
+
+===================================================================================================================
+Test C.2 : Scalabilité et robustesse
+===================================================================================================================
+# C.2.1 : Nombre de joueurs
+
+============================================================
+Tournament date: 2025-11-13 09:18:00
+Total games: 200
+Finished: 193
+Draws: 7
+Average turns: 39.0
+Average duration: 0.32s
+Total time: 1.1 minutes
+Speed: 3.2 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based)  Wins: 101 | Win%:   52.3% | AvgPlace:  1.50
+ 2. probabilistic              Wins:  92 | Win%:   47.7% | AvgPlace:  1.50
+
+============================================================
+Tournament date: 2025-11-13 09:19:13
+Total games: 200
+Finished: 195
+Draws: 5
+Average turns: 48.5
+Average duration: 0.24s
+Total time: 0.8 minutes
+Speed: 4.2 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based)  Wins: 139 | Win%:   71.3% | AvgPlace:  1.58
+ 2. probabilistic              Wins:  56 | Win%:   28.7% | AvgPlace:  2.39
+ 3. random, uniform            Wins:   0 | Win%:    0.0% | AvgPlace:  2.02
+
+============================================================
+Tournament date: 2025-11-13 09:19:58
+Total games: 200
+Finished: 195
+Draws: 5
+Average turns: 49.7
+Average duration: 0.11s
+Total time: 0.4 minutes
+Speed: 9.0 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based)  Wins: 152 | Win%:   77.9% | AvgPlace:  1.70
+ 2. probabilistic              Wins:  43 | Win%:   22.1% | AvgPlace:  3.31
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.00
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  2.00
+
+============================================================
+Tournament date: 2025-11-13 09:20:39
+Total games: 200
+Finished: 187
+Draws: 13
+Average turns: 69.8
+Average duration: 0.14s
+Total time: 0.5 minutes
+Speed: 7.1 games/sec
+
+Final standings:
+ 1. Balanced Aggressor (Research-Based)  Wins: 149 | Win%:   79.7% | AvgPlace:  1.94
+ 2. probabilistic              Wins:  38 | Win%:   20.3% | AvgPlace:  4.06
+ 3. random, uniform #1         Wins:   0 | Win%:    0.0% | AvgPlace:  3.94
+ 4. random, uniform #2         Wins:   0 | Win%:    0.0% | AvgPlace:  3.00
+ 5. random, uniform #3         Wins:   0 | Win%:    0.0% | AvgPlace:  2.06
+
+===================================================================================================================
+# C.2.2 : Limite de temps
+============================================================

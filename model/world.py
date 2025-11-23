@@ -58,10 +58,28 @@ class World:
                   G:      List['Strategy'],
                   M:      Dict[RegionName, Set[TerritoryName]],
                   Gamma:  Dict[TerritoryName, Set[TerritoryName]]):
-        assert len(G) >= 1, "at least one army, as a limit case"
+        """
+        :param G:  the list of strategies that are going to play against each other
+        :param M:  the map of the world, as regions containing territories
+        :param Gamma:  the (maybe _partial_) bordering relationship between territories 
+
+        :pre:  there must be at least one strategy/army, as a limit case
+        :pre:  there are at least as many territories as armies
+        :pre:  the graph has to be connected, minimally no Gamma is empty
+        :pre:  the graph has to be connected, minimally any territory of a region appears in Gamma
+
+        :post:  The number of armies is the number of strategies
+        :post:  The regions is the domain of the map
+        """
+        assert len(G) >= 1, "there must be at least one strategy/army, as a limit case"
         assert len({ t
                      for r in M
-                     for t in M[r] }) >= len(G), "at least as many territories as armies"
+                     for t in M[r] }) >= len(G), "there are at least as many territories as armies"
+        assert all(Gamma[t] != set()
+                   for t in Gamma), "the graph has to be connected, minimally no Gamma is empty"
+        assert all(t in Gamma
+                   for r in M
+                   for t in M[r]), "the graph has to be connected, minimally any territory of a region appears in Gamma"
 
         A = { c: Army(c, g)
               for (c, g) in zip(ARMY_COLOURS, G) }
@@ -69,7 +87,7 @@ class World:
               for r in M }
         T = { t: Territory(t, R[r])
               for r in M
-             for t in M[r] }
+              for t in M[r] }
         D = { (T[t1], T[t2])
               for t1 in Gamma
               for t2 in Gamma[t1]
@@ -84,20 +102,28 @@ class World:
         self._territories_index = T
         self._territories = { T[t] for t in T }
         self._adjacencies = D
-        self._region_adjacencies = { (r1, r2)
-                                      for t1 in T
-                                      for t2 in T
-                                      if t1 != t2
-                                      if (r1 := T[t1].region) != (r2 := T[t2].region)}
+        self._region_adjacencies = { (t.region, s.region)
+                                      for (t, s) in D }
         self._region_territories = { R[r]: { T[t]
                                               for t in T
-                                              if T[t].region == r }
+                                              if T[t].region == R[r] } # R[r] rather than r previously: NO thanks to mypy and pyright!
                                       for r in R }
+
+        assert len(self.armies) == len(G), "The number of armies is the number of strategies"
+        assert len(self.regions) == len(M), "The regions is the domain of the map"
+        assert { r.name for r in self.regions } == set(M), "The regions is the domain of the map"
+        assert len(self.territories) == sum(len(M[r]) for r in M)
+        assert { t.name for t in self.territories } == { t for r in M for t in M[r] }
+        assert { (t.name, s.name) for (t, s) in self.adjacencies } == { (t, s) for t in Gamma for s in Gamma[t] } | { (s, t) for t in Gamma for s in Gamma[t] }
+        assert all(any(t.region == r and u.region == s for (t, u) in self.adjacencies) for (r, s) in self.region_adjacencies)
+        assert { r.name:  { t.name for t in self.region_territories[r] } for r in self.region_territories } == M
+        assert all(isinstance(self.region(r), Region) for r in M)
+        assert all(isinstance(self.territory(t), Territory) for t in Gamma)
 
     @property
     def armies (self) -> Armies:
         """
-        From three to six armies fighting against each other on the board.
+        From one (!) to six armies fighting against each other on the board.
         """
         return self._armies
 

@@ -58,7 +58,7 @@ def model_of_attack_function (s: State,
 """
 
 
-__all__ = ['attack_calculated', 'attack_if_favorable']
+__all__ = ['random_attack','attack_calculated', 'attack_if_favorable']
 
 
 from functools import lru_cache
@@ -124,27 +124,40 @@ BALANCED_BATTLE_OUTCOMES: Dict[Tuple[int, int], Tuple[Tuple[int, int, float], ..
 }
 
 
-@lru_cache(maxsize=1024)
+@lru_cache(maxsize=200_000)
 def _balanced_conquest_probability(attackers: int, defenders: int) -> float:
-    """
-    Recursive Markov chain style computation of conquering odds based on fixed
-    battle outcome probabilities.
-    """
-    if defenders <= 0:
+    a = max(0, int(attackers))
+    d = max(0, int(defenders))
+    if d <= 0:
         return 1.0
-    if attackers <= 1:
+    if a <= 1:
         return 0.0
 
-    attack_dice = min(3, attackers - 1)
-    defend_dice = min(2, defenders)
-    outcomes = BALANCED_BATTLE_OUTCOMES[(attack_dice, defend_dice)]
+    A, D = a, d
+    # d = 0 -> victoire certaine pour tout a
+    row_d0 = [1.0] * (A + 1)
+    prev2 = [0.0] * (A + 1)   # d-2 (inexistant au départ)
+    prev1 = row_d0            # d-1 = 0
 
-    probability = 0.0
-    for loss_a, loss_d, weight in outcomes:
-        probability += weight * _balanced_conquest_probability(
-            attackers - loss_a, defenders - loss_d
-        )
-    return probability
+    for cur_d in range(1, D + 1):
+        curr = [0.0] * (A + 1)  # par défaut: a=0 ou 1 -> 0
+        for cur_a in range(2, A + 1):
+            ad = min(3, cur_a - 1)
+            dd = min(2, cur_d)
+            outcomes = BALANCED_BATTLE_OUTCOMES[(ad, dd)]
+
+            v = 0.0
+            for loss_a, loss_d, weight in outcomes:
+                aa = cur_a - loss_a
+                if aa < 0:
+                    aa = 0
+                base = curr if loss_d == 0 else (prev1 if loss_d == 1 else prev2)
+                v += weight * base[aa]
+            curr[cur_a] = v
+
+        prev2, prev1 = prev1, curr
+
+    return prev1[A]
 
 
 def _neighbors(s: State, t: Territory) -> List[Territory]:
@@ -217,20 +230,41 @@ _ROLL_ODDS: Dict[Tuple[int, int], Dict[Tuple[int, int], float]] = {
 }
 
 
-@lru_cache(maxsize=None)
+@lru_cache(maxsize=200_000)
 def conquest_prob(attackers: int, defenders: int) -> float:
-    """Probability attacker conquers given forces (Risk approximation)."""
-    if defenders == 0:
+    a = max(0, int(attackers))
+    d = max(0, int(defenders))
+    if d <= 0:
         return 1.0
-    if attackers <= 1:
+    if a <= 1:
         return 0.0
-    attack_dice = min(3, attackers - 1)
-    defend_dice = min(2, defenders)
-    odds = _ROLL_ODDS.get((attack_dice, defend_dice), {})
-    return sum(
-        prob * conquest_prob(attackers - loss_a, defenders - loss_d)
-        for (loss_a, loss_d), prob in odds.items()
-    )
+
+    A, D = a, d
+    row_d0 = [1.0] * (A + 1)
+    prev2 = [0.0] * (A + 1)
+    prev1 = row_d0
+
+    for cur_d in range(1, D + 1):
+        curr = [0.0] * (A + 1)
+        for cur_a in range(2, A + 1):
+            ad = min(3, cur_a - 1)
+            dd = min(2, cur_d)
+            odds = _ROLL_ODDS.get((ad, dd), {})
+
+            v = 0.0
+            for (loss_a, loss_d), prob in odds.items():
+                if prob <= 0.0:
+                    continue
+                aa = cur_a - loss_a
+                if aa < 0:
+                    aa = 0
+                base = curr if loss_d == 0 else (prev1 if loss_d == 1 else prev2)
+                v += prob * base[aa]
+            curr[cur_a] = v
+
+        prev2, prev1 = prev1, curr
+
+    return prev1[A]
 
 
 def _prob_border_territories(s: State, a: Army) -> List[Territory]:
@@ -273,7 +307,7 @@ def attack_if_favorable(s: State,
     return attacker, defender, dice
 
 
-# ======================== Balanced Aggressor strategy ======================
+# ======================== Heuristic Probabilistic Attacker strategy ======================
 
 def attack_calculated(s: State,
                       a: Army) -> Optional[Tuple[Territory, Territory, Unit]]:
